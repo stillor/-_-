@@ -12,7 +12,7 @@ class MessageDetailTableViewCell: UITableViewCell {
     @IBOutlet var MessageDetail_name:UILabel?
     @IBOutlet var MessageDetail_detail:UILabel?
     @IBOutlet var MessageDetail_date:UILabel?
-    @IBOutlet var MessageDetail_button:UIButton?
+
 
 
     override func awakeFromNib() {

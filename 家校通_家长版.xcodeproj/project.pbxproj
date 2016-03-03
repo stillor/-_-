@@ -39,6 +39,8 @@
 		299359611C79556A00947518 /* _______Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299359601C79556A00947518 /* _______Tests.swift */; };
 		2993596C1C79556A00947518 /* _______UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2993596B1C79556A00947518 /* _______UITests.swift */; };
 		29BC96BE1C82BD620031A0C6 /* ImageSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BC96BD1C82BD620031A0C6 /* ImageSelectViewController.swift */; };
+		29BCF1511C87D43B00EDD35A /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BCF1461C87D43200EDD35A /* SnapKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		29BCF1521C87D43B00EDD35A /* SnapKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 29BCF1461C87D43200EDD35A /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		29C68FBF1C85407000B5EA85 /* PNChartSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C68FBE1C85406900B5EA85 /* PNChartSwift.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		29C68FC11C85462600B5EA85 /* PNChartSwift.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 29C68FBE1C85406900B5EA85 /* PNChartSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		29D355651C82A1B30060425B /* MyInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D355631C82A1B30060425B /* MyInformationTableViewCell.swift */; };
@@ -82,6 +84,55 @@
 			proxyType = 1;
 			remoteGlobalIDString = 299359441C79556900947518;
 			remoteInfo = "家校通_家长版";
+		};
+		29BCF1451C87D43200EDD35A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29BCF12D1C87D43100EDD35A /* SnapKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EEBCC9D819CC627D0083B827;
+			remoteInfo = "SnapKit iOS";
+		};
+		29BCF1471C87D43200EDD35A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29BCF12D1C87D43100EDD35A /* SnapKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 537DCE921C35CC8800B5B899;
+			remoteInfo = "SnapKit tvOS";
+		};
+		29BCF1491C87D43200EDD35A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29BCF12D1C87D43100EDD35A /* SnapKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EECDB37A1AC0C9D4006BBC11;
+			remoteInfo = "SnapKit OSX";
+		};
+		29BCF14B1C87D43200EDD35A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29BCF12D1C87D43100EDD35A /* SnapKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EEBCC9E219CC627E0083B827;
+			remoteInfo = "SnapKit iOS Tests";
+		};
+		29BCF14D1C87D43200EDD35A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29BCF12D1C87D43100EDD35A /* SnapKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 537DCEAF1C35D90A00B5B899;
+			remoteInfo = "SnapKit tvOS Tests";
+		};
+		29BCF14F1C87D43200EDD35A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29BCF12D1C87D43100EDD35A /* SnapKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EECDB3841AC0C9D4006BBC11;
+			remoteInfo = "SnapKit OSX Tests";
+		};
+		29BCF1531C87D43B00EDD35A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29BCF12D1C87D43100EDD35A /* SnapKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EEBCC9D719CC627D0083B827;
+			remoteInfo = "SnapKit iOS";
 		};
 		29C68FBB1C85406900B5EA85 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -211,6 +262,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				29BCF1521C87D43B00EDD35A /* SnapKit.framework in Copy Frameworks */,
 				29DA05361C8676F4008E3870 /* Kingfisher.framework in Copy Frameworks */,
 				29C68FC11C85462600B5EA85 /* PNChartSwift.framework in Copy Frameworks */,
 			);
@@ -268,6 +320,7 @@
 		2993596B1C79556A00947518 /* _______UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "_______UITests.swift"; sourceTree = "<group>"; };
 		2993596D1C79556A00947518 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29BC96BD1C82BD620031A0C6 /* ImageSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSelectViewController.swift; sourceTree = "<group>"; };
+		29BCF12D1C87D43100EDD35A /* SnapKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SnapKit.xcodeproj; path = "../../../Downloads/SnapKit-develop/SnapKit.xcodeproj"; sourceTree = "<group>"; };
 		29C68FB41C85406900B5EA85 /* PNChartSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PNChartSwift.xcodeproj; path = "../../../Downloads/PNChart-Swift-master/PNChartSwift.xcodeproj"; sourceTree = "<group>"; };
 		29D355631C82A1B30060425B /* MyInformationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInformationTableViewCell.swift; sourceTree = "<group>"; };
 		29D355641C82A1B30060425B /* MyInformationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyInformationTableViewCell.xib; sourceTree = "<group>"; };
@@ -301,6 +354,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29BCF1511C87D43B00EDD35A /* SnapKit.framework in Frameworks */,
 				29C68FBF1C85407000B5EA85 /* PNChartSwift.framework in Frameworks */,
 				29FAA7B81C85258500D71CEC /* MCMHeaderAnimated.framework in Frameworks */,
 			);
@@ -326,6 +380,7 @@
 		2993593C1C79556900947518 = {
 			isa = PBXGroup;
 			children = (
+				29BCF12D1C87D43100EDD35A /* SnapKit.xcodeproj */,
 				29DA05081C8676B7008E3870 /* Kingfisher.xcodeproj */,
 				29C68FB41C85406900B5EA85 /* PNChartSwift.xcodeproj */,
 				29FAA7AF1C85257D00D71CEC /* MCMHeaderAnimated.xcodeproj */,
@@ -457,6 +512,19 @@
 			name = Lib;
 			sourceTree = "<group>";
 		};
+		29BCF12E1C87D43100EDD35A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				29BCF1461C87D43200EDD35A /* SnapKit.framework */,
+				29BCF1481C87D43200EDD35A /* SnapKit.framework */,
+				29BCF14A1C87D43200EDD35A /* SnapKit.framework */,
+				29BCF14C1C87D43200EDD35A /* SnapKit iOS Tests.xctest */,
+				29BCF14E1C87D43200EDD35A /* SnapKit tvOS Tests.xctest */,
+				29BCF1501C87D43200EDD35A /* SnapKit OSX Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		29C68FB51C85406900B5EA85 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -511,6 +579,7 @@
 			);
 			dependencies = (
 				29DA05341C8676C0008E3870 /* PBXTargetDependency */,
+				29BCF1541C87D43B00EDD35A /* PBXTargetDependency */,
 			);
 			name = "家校通_家长版";
 			productName = "家校通_家长版";
@@ -603,6 +672,10 @@
 					ProductGroup = 29C68FB51C85406900B5EA85 /* Products */;
 					ProjectRef = 29C68FB41C85406900B5EA85 /* PNChartSwift.xcodeproj */;
 				},
+				{
+					ProductGroup = 29BCF12E1C87D43100EDD35A /* Products */;
+					ProjectRef = 29BCF12D1C87D43100EDD35A /* SnapKit.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -614,6 +687,48 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		29BCF1461C87D43200EDD35A /* SnapKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SnapKit.framework;
+			remoteRef = 29BCF1451C87D43200EDD35A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		29BCF1481C87D43200EDD35A /* SnapKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SnapKit.framework;
+			remoteRef = 29BCF1471C87D43200EDD35A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		29BCF14A1C87D43200EDD35A /* SnapKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SnapKit.framework;
+			remoteRef = 29BCF1491C87D43200EDD35A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		29BCF14C1C87D43200EDD35A /* SnapKit iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SnapKit iOS Tests.xctest";
+			remoteRef = 29BCF14B1C87D43200EDD35A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		29BCF14E1C87D43200EDD35A /* SnapKit tvOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SnapKit tvOS Tests.xctest";
+			remoteRef = 29BCF14D1C87D43200EDD35A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		29BCF1501C87D43200EDD35A /* SnapKit OSX Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SnapKit OSX Tests.xctest";
+			remoteRef = 29BCF14F1C87D43200EDD35A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		29C68FBC1C85406900B5EA85 /* PNChartSwiftTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
@@ -842,6 +957,11 @@
 			target = 299359441C79556900947518 /* 家校通_家长版 */;
 			targetProxy = 299359681C79556A00947518 /* PBXContainerItemProxy */;
 		};
+		29BCF1541C87D43B00EDD35A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SnapKit iOS";
+			targetProxy = 29BCF1531C87D43B00EDD35A /* PBXContainerItemProxy */;
+		};
 		29DA05341C8676C0008E3870 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Kingfisher-iOS";
@@ -958,6 +1078,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "家校通_家长版/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
@@ -975,6 +1096,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "家校通_家长版/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
