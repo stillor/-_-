@@ -9,11 +9,15 @@
 /* Begin PBXBuildFile section */
 		2915F8D11C8010BA00127247 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2915F8D01C8010BA00127247 /* SCLAlertView.swift */; };
 		2915F92C1C80360E00127247 /* PandectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2915F92A1C80360E00127247 /* PandectTableViewCell.swift */; };
-		2915F92F1C80365700127247 /* PandectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2915F92E1C80365700127247 /* PandectTableViewController.swift */; };
-		2915F9331C80380100127247 /* PandectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2915F9321C80380100127247 /* PandectViewController.swift */; };
+		2915F92F1C80365700127247 /* PandectTableViewController(放弃).swift in Sources */ = {isa = PBXBuildFile; fileRef = 2915F92E1C80365700127247 /* PandectTableViewController(放弃).swift */; };
+		2915F9331C80380100127247 /* PandectViewController(放弃).swift in Sources */ = {isa = PBXBuildFile; fileRef = 2915F9321C80380100127247 /* PandectViewController(放弃).swift */; };
 		291646561C7B03E6007EBD16 /* StudentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291646551C7B03E6007EBD16 /* StudentTableViewController.swift */; };
 		291646581C7B040A007EBD16 /* CommunicationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291646571C7B040A007EBD16 /* CommunicationTableViewController.swift */; };
+		29168C831C895A0900BF5D61 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29168C821C895A0900BF5D61 /* LaunchViewController.swift */; };
 		294D37D71C82815800019DDA /* Pandect_ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294D37D61C82815800019DDA /* Pandect_ButtonTableViewCell.swift */; };
+		295463FA1C891C1300E17DAE /* Student_Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295463F91C891C1300E17DAE /* Student_Score.swift */; };
+		295464101C8920F400E17DAE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2954640F1C8920F400E17DAE /* LoginViewController.swift */; };
+		295464121C8925D400E17DAE /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295464111C8925D400E17DAE /* Global.swift */; };
 		2977D7931C813E1600ED1544 /* MCMHeaderAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2977D7921C813E1600ED1544 /* MCMHeaderAnimated.swift */; };
 		298021D81C83E2BA0039C7F1 /* AllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298021D71C83E2BA0039C7F1 /* AllTableViewController.swift */; };
 		298021E01C83F38C0039C7F1 /* UITextField+LTBouncyPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298021DF1C83F38C0039C7F1 /* UITextField+LTBouncyPlaceholder.swift */; };
@@ -38,6 +42,7 @@
 		299359561C79556900947518 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 299359541C79556900947518 /* LaunchScreen.storyboard */; };
 		299359611C79556A00947518 /* _______Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299359601C79556A00947518 /* _______Tests.swift */; };
 		2993596C1C79556A00947518 /* _______UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2993596B1C79556A00947518 /* _______UITests.swift */; };
+		29B7399D1C881C4B00F91888 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B7399C1C881C4B00F91888 /* HttpRequest.swift */; };
 		29BC96BE1C82BD620031A0C6 /* ImageSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BC96BD1C82BD620031A0C6 /* ImageSelectViewController.swift */; };
 		29BCF1511C87D43B00EDD35A /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BCF1461C87D43200EDD35A /* SnapKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		29BCF1521C87D43B00EDD35A /* SnapKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 29BCF1461C87D43200EDD35A /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -284,11 +289,15 @@
 /* Begin PBXFileReference section */
 		2915F8D01C8010BA00127247 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = SOURCE_ROOT; };
 		2915F92A1C80360E00127247 /* PandectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PandectTableViewCell.swift; sourceTree = "<group>"; };
-		2915F92E1C80365700127247 /* PandectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PandectTableViewController.swift; sourceTree = "<group>"; };
-		2915F9321C80380100127247 /* PandectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PandectViewController.swift; sourceTree = "<group>"; };
+		2915F92E1C80365700127247 /* PandectTableViewController(放弃).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PandectTableViewController(放弃).swift"; sourceTree = "<group>"; };
+		2915F9321C80380100127247 /* PandectViewController(放弃).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PandectViewController(放弃).swift"; sourceTree = "<group>"; };
 		291646551C7B03E6007EBD16 /* StudentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTableViewController.swift; sourceTree = "<group>"; };
 		291646571C7B040A007EBD16 /* CommunicationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationTableViewController.swift; sourceTree = "<group>"; };
+		29168C821C895A0900BF5D61 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		294D37D61C82815800019DDA /* Pandect_ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pandect_ButtonTableViewCell.swift; sourceTree = "<group>"; };
+		295463F91C891C1300E17DAE /* Student_Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student_Score.swift; sourceTree = "<group>"; };
+		2954640F1C8920F400E17DAE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		295464111C8925D400E17DAE /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		2977D7921C813E1600ED1544 /* MCMHeaderAnimated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MCMHeaderAnimated.swift; path = "../../../../Downloads/MCMHeaderAnimated-swift-2.0/Source/MCMHeaderAnimated.swift"; sourceTree = "<group>"; };
 		298021D71C83E2BA0039C7F1 /* AllTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTableViewController.swift; sourceTree = "<group>"; };
 		298021DF1C83F38C0039C7F1 /* UITextField+LTBouncyPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextField+LTBouncyPlaceholder.swift"; path = "../../../../Downloads/LTBouncyPlaceholder-master/LTBouncyPlaceholder/UITextField+LTBouncyPlaceholder.swift"; sourceTree = "<group>"; };
@@ -319,6 +328,7 @@
 		299359671C79556A00947518 /* 家校通_家长版UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "家校通_家长版UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2993596B1C79556A00947518 /* _______UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "_______UITests.swift"; sourceTree = "<group>"; };
 		2993596D1C79556A00947518 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29B7399C1C881C4B00F91888 /* HttpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
 		29BC96BD1C82BD620031A0C6 /* ImageSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSelectViewController.swift; sourceTree = "<group>"; };
 		29BCF12D1C87D43100EDD35A /* SnapKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SnapKit.xcodeproj; path = "../../../Downloads/SnapKit-develop/SnapKit.xcodeproj"; sourceTree = "<group>"; };
 		29C68FB41C85406900B5EA85 /* PNChartSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PNChartSwift.xcodeproj; path = "../../../Downloads/PNChart-Swift-master/PNChartSwift.xcodeproj"; sourceTree = "<group>"; };
@@ -440,6 +450,9 @@
 		2999CEA91C7A9EBF002D0A61 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				29B7399C1C881C4B00F91888 /* HttpRequest.swift */,
+				295463F91C891C1300E17DAE /* Student_Score.swift */,
+				295464111C8925D400E17DAE /* Global.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -453,8 +466,8 @@
 				29D94C7F1C7C33E200A5708C /* ScoreTableViewController.swift */,
 				299008171C7D57A900843360 /* HomeworkTableViewController.swift */,
 				29DD3EAA1C7D7BA1000A2986 /* MeTableViewController.swift */,
-				2915F92E1C80365700127247 /* PandectTableViewController.swift */,
-				2915F9321C80380100127247 /* PandectViewController.swift */,
+				2915F92E1C80365700127247 /* PandectTableViewController(放弃).swift */,
+				2915F9321C80380100127247 /* PandectViewController(放弃).swift */,
 				29BC96BD1C82BD620031A0C6 /* ImageSelectViewController.swift */,
 				298021D71C83E2BA0039C7F1 /* AllTableViewController.swift */,
 				29FAA7B91C8533C100D71CEC /* ChatViewController(无用).swift */,
@@ -462,6 +475,8 @@
 				29DA05491C86C2A1008E3870 /* MessageTableViewController.swift */,
 				29DA055A1C86C543008E3870 /* MessageDetailViewController.swift */,
 				29DA055C1C86C7EE008E3870 /* MessageDetailTableViewController.swift */,
+				2954640F1C8920F400E17DAE /* LoginViewController.swift */,
+				29168C821C895A0900BF5D61 /* LaunchViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -898,29 +913,34 @@
 				29DD3EA81C7D7B8E000A2986 /* MeTableViewCell.swift in Sources */,
 				298FC0461C8587FA00A9B71E /* CarouselBannerView.swift in Sources */,
 				298564601C7BF4040089D7E9 /* AttendanceTableViewCell.swift in Sources */,
+				295464121C8925D400E17DAE /* Global.swift in Sources */,
 				299359511C79556900947518 /* _______.xcdatamodeld in Sources */,
-				2915F92F1C80365700127247 /* PandectTableViewController.swift in Sources */,
+				2915F92F1C80365700127247 /* PandectTableViewController(放弃).swift in Sources */,
 				291646561C7B03E6007EBD16 /* StudentTableViewController.swift in Sources */,
 				29DD3EAE1C7D86C7000A2986 /* ButtonTableViewCell.swift in Sources */,
 				2977D7931C813E1600ED1544 /* MCMHeaderAnimated.swift in Sources */,
 				29DA054A1C86C2A1008E3870 /* MessageTableViewController.swift in Sources */,
 				29DA05391C868023008E3870 /* NewsTableViewCell.swift in Sources */,
 				29BC96BE1C82BD620031A0C6 /* ImageSelectViewController.swift in Sources */,
+				29168C831C895A0900BF5D61 /* LaunchViewController.swift in Sources */,
 				29D94C801C7C33E200A5708C /* ScoreTableViewController.swift in Sources */,
 				298FC03E1C856ADD00A9B71E /* ChatTableViewController.swift in Sources */,
 				294D37D71C82815800019DDA /* Pandect_ButtonTableViewCell.swift in Sources */,
+				29B7399D1C881C4B00F91888 /* HttpRequest.swift in Sources */,
 				29DA055B1C86C543008E3870 /* MessageDetailViewController.swift in Sources */,
 				2915F92C1C80360E00127247 /* PandectTableViewCell.swift in Sources */,
 				2993594B1C79556900947518 /* ViewController.swift in Sources */,
 				29D94C7D1C7C301100A5708C /* HomeworkTableViewCell.swift in Sources */,
 				29DA055D1C86C7EE008E3870 /* MessageDetailTableViewController.swift in Sources */,
 				298564721C7C042E0089D7E9 /* StudentTableViewCell.swift in Sources */,
+				295464101C8920F400E17DAE /* LoginViewController.swift in Sources */,
 				299008181C7D57A900843360 /* HomeworkTableViewController.swift in Sources */,
 				298021D81C83E2BA0039C7F1 /* AllTableViewController.swift in Sources */,
 				299359491C79556900947518 /* AppDelegate.swift in Sources */,
-				2915F9331C80380100127247 /* PandectViewController.swift in Sources */,
+				2915F9331C80380100127247 /* PandectViewController(放弃).swift in Sources */,
 				29D355651C82A1B30060425B /* MyInformationTableViewCell.swift in Sources */,
 				29DD3EAB1C7D7BA1000A2986 /* MeTableViewController.swift in Sources */,
+				295463FA1C891C1300E17DAE /* Student_Score.swift in Sources */,
 				298FC0371C8564DE00A9B71E /* AllTableViewCell.swift in Sources */,
 				29DA053D1C868D04008E3870 /* MessageTableViewCell.swift in Sources */,
 				29FAA7BA1C8533C100D71CEC /* ChatViewController(无用).swift in Sources */,

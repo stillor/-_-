@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mrd-nY-YJw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QoD-wc-Edx">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -212,6 +212,33 @@
             </objects>
             <point key="canvasLocation" x="1297" y="-240"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Hm4-Xs-tTd">
+            <objects>
+                <viewController storyboardIdentifier="SetIdentifier" id="1Qh-ix-aSW" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CeO-ep-I7j"/>
+                        <viewControllerLayoutGuide type="bottom" id="8KV-qB-uuf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="S1Z-oe-RBY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="这么简单的APP还设置啥啊-_-||" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVl-Fy-e2I">
+                                <rect key="frame" x="43" y="76" width="235" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9M1-zF-rD9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1658" y="-240"/>
+        </scene>
         <!--Message Detail Table View Controller-->
         <scene sceneID="WM7-Wm-VsW">
             <objects>
@@ -266,7 +293,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Npi-kw-ELG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2020" y="-872"/>
+            <point key="canvasLocation" x="2056" y="-878"/>
         </scene>
         <!--Student Table View Controller-->
         <scene sceneID="70g-dP-2bp">
@@ -507,6 +534,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="uKb-dd-8RL" kind="presentation" identifier="RelogIdentifier" id="PUi-ol-Xnl"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -569,16 +599,48 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="yl1-zC-nD0"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXk-eR-u1W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-935" y="-1752"/>
+            <point key="canvasLocation" x="-1560" y="-1823"/>
         </scene>
-        <!--View Controller-->
+        <!--Launch View Controller-->
+        <scene sceneID="Knl-zc-mcD">
+            <objects>
+                <viewController id="QoD-wc-Edx" customClass="LaunchViewController" customModule="家校通_家长版" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="azb-OO-ce5"/>
+                        <viewControllerLayoutGuide type="bottom" id="8ei-kP-bpv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G5n-CQ-5az">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FSC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pm-cf-caM">
+                                <rect key="frame" x="149" y="130" width="32" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="uKb-dd-8RL" kind="presentation" identifier="NologIdentifier" id="hih-fF-KJ7"/>
+                        <segue destination="Mrd-nY-YJw" kind="presentation" identifier="YeslogIdentifier" id="9uy-dS-q48"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gQp-xE-nVQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1153" y="-1953"/>
+        </scene>
+        <!--Login View Controller-->
         <scene sceneID="cGk-gE-9s8">
             <objects>
-                <viewController id="uKb-dd-8RL" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogIdentifier" wantsFullScreenLayout="YES" hidesBottomBarWhenPushed="YES" id="uKb-dd-8RL" customClass="LoginViewController" customModule="家校通_家长版" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w9o-cq-EMg"/>
                         <viewControllerLayoutGuide type="bottom" id="VXs-ay-ha5"/>
@@ -606,14 +668,34 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="abbreviatedPlaceholder" value="用户名"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7q-HQ-ZHO">
+                                <rect key="frame" x="37" y="237" width="246" height="30"/>
+                                <state key="normal" title="登录"/>
+                                <connections>
+                                    <action selector="login" destination="uKb-dd-8RL" eventType="touchDown" id="pB6-Pt-UaX"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLg-AH-V8B">
+                                <rect key="frame" x="37" y="195" width="246" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="password" destination="Ycd-Oh-HMu" id="e6p-mB-uoI"/>
+                        <outlet property="tip" destination="JLg-AH-V8B" id="Zxt-Ha-d8l"/>
+                        <outlet property="username" destination="UUb-Zk-4oe" id="TuJ-PS-lck"/>
+                        <segue destination="Mrd-nY-YJw" kind="show" identifier="LoginIdentifier" id="xwZ-aB-KxQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8c-7O-U0s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-567" y="-1752"/>
+            <point key="canvasLocation" x="-594" y="-1788"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4Mk-gH-UYN">
@@ -634,7 +716,11 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KlE-RM-vuX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-105" y="-1839"/>
+            <point key="canvasLocation" x="-158" y="-1866"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="xwZ-aB-KxQ"/>
+        <segue reference="hih-fF-KJ7"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -59,6 +59,7 @@ class MessageTableViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let vc = storyboard?.instantiateViewControllerWithIdentifier("MessageTableIdentifier") as! MessageDetailTableViewController
         vc.navigationItem.title = "主题"
+        vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
         
     }

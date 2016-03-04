@@ -12,7 +12,8 @@ class AllTableViewController: UITableViewController,CarouselBannerViewDelegate{
     
     var bannerView = CarouselBannerView()
     var imageSource = NSArray()
-
+    var g = Global()
+    let imagePosition = NSUserDefaults.standardUserDefaults().valueForKey("ImagePosition") as? String
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,8 +57,9 @@ class AllTableViewController: UITableViewController,CarouselBannerViewDelegate{
         }else if indexPath.section == 1 {
             tableView.registerNib(UINib(nibName: "AllTableViewCell", bundle:nil),forCellReuseIdentifier: "cell")
             let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! AllTableViewCell
-            cell.All_info?.text = "查看更多..."
+            cell.All_info?.text = "  "
             cell.All_info?.textColor = UIColor.blueColor()
+            cell.userInteractionEnabled = false
             return cell
         }else{
             tableView.registerNib(UINib(nibName: "NewsTableViewCell", bundle:nil),forCellReuseIdentifier: "cell")
@@ -68,6 +70,7 @@ class AllTableViewController: UITableViewController,CarouselBannerViewDelegate{
             cell.News_info?.textColor = UIColor.grayColor()
             cell.News_date?.text = "2016-2-21"
             cell.News_date?.textColor = UIColor.grayColor()
+            cell.userInteractionEnabled = true
             return cell
         }
         
@@ -89,9 +92,9 @@ class AllTableViewController: UITableViewController,CarouselBannerViewDelegate{
         }
        return " "
     }
-    
+//    (NSURL(string:"http://\(g.IP):8080\(imagePosition! as String)")!)
     func fetchData(){ //获取图片信息
-        imageSource = NSArray.init(objects: "http://static.damai.cn/cfs/2015/12/1ab03ad9-fcab-4806-b2a9-56e111bcde1f.jpg","http://static.dmcdn.cn/cfs/2016/1/86cb20f1-ec19-451a-975c-9123a92b1b16.jpg","http://static.dmcdn.cn/cfs/2015/12/f1f88dd4-493f-43d0-9f67-a62c4ce70d54.jpg","http://pimg.damai.cn/perform/damai/NewIndexManagement/201601/e0cbde39ecc94a4986e9ed8f6b2767e8.jpg")
+        imageSource = NSArray.init(objects: "http://\(g.IP):8080\(imagePosition! as String)","http://static.dmcdn.cn/cfs/2016/1/86cb20f1-ec19-451a-975c-9123a92b1b16.jpg","http://static.dmcdn.cn/cfs/2015/12/f1f88dd4-493f-43d0-9f67-a62c4ce70d54.jpg","http://pimg.damai.cn/perform/damai/NewIndexManagement/201601/e0cbde39ecc94a4986e9ed8f6b2767e8.jpg")
         //         imageSource = NSArray.init(object: "http://static.damai.cn/cfs/2015/12/1ab03ad9-fcab-4806-b2a9-56e111bcde1f.jpg")
         
         self.bannerView .reloadData()
@@ -112,7 +115,6 @@ class AllTableViewController: UITableViewController,CarouselBannerViewDelegate{
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        performSegueWithIdentifier("Pandect_All", sender: self)
 
      }
 

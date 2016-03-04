@@ -22,19 +22,13 @@ class ImageSelectViewController: UIViewController,UIImagePickerControllerDelegat
         let userIconActionGR = UITapGestureRecognizer()
         userIconActionGR.addTarget(self, action: Selector("selectIcon"))
         icon!.addGestureRecognizer(userIconActionGR)
-//        let cache = Shared.imageCache
-//        cache.fetch(key: "self_icon").onSuccess{image in
-//            self.icon?.image = image
-//        }
-        
-        //icon?.image = test
         
         //从文件读取用户头像
         let fullPath = ((NSHomeDirectory() as NSString) .stringByAppendingPathComponent("Documents") as NSString).stringByAppendingPathComponent("myicon.png")
         //可选绑定,若保存过用户头像则显示之
-         if let savedImage = UIImage(contentsOfFile: fullPath){
-            self.icon!.image = savedImage
-        }
+        let g = Global()
+        let imagePosition = NSUserDefaults.standardUserDefaults().valueForKey("ImagePosition") as? String
+        self.icon?.kf_setImageWithURL(NSURL(string:"http://\(g.IP):8080\(imagePosition! as String)")!)
         
     }
     
@@ -87,19 +81,15 @@ class ImageSelectViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        //获取照片的原图
-//        let image = (info as NSDictionary).objectForKey(UIImagePickerControllerOriginalImage)
-        //获得编辑后的图片
+         //获得编辑后的图片
         let image = (info as NSDictionary).objectForKey(UIImagePickerControllerEditedImage)
         icon?.image = image as? UIImage
-//        let cache = Shared.imageCache
-//        cache.set(value: (image as? UIImage)!, key: "self_icon")
-        //保存图片至沙盒
+
         self.saveImage(image as! UIImage, imageName: "myicon.png")
         let fullPath = ((NSHomeDirectory() as NSString).stringByAppendingPathComponent("Documents") as NSString).stringByAppendingPathComponent("myicon.png")
         //存储后拿出更新头像
         let savedImage = UIImage(contentsOfFile: fullPath)
-                self.icon!.image=savedImage
+        self.icon!.image=savedImage
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
     func saveImage(currentImage:UIImage,imageName:String){
@@ -109,6 +99,11 @@ class ImageSelectViewController: UIViewController,UIImagePickerControllerDelegat
         let fullPath = ((NSHomeDirectory() as NSString).stringByAppendingPathComponent("Documents") as NSString).stringByAppendingPathComponent(imageName)
         // 将图片写入文件
         imageData.writeToFile(fullPath, atomically: false)
+    }
+    
+    func upload(image:UIImage){
+        let data = UIImagePNGRepresentation(image)
+        
     }
     
 

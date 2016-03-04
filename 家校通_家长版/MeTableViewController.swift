@@ -13,6 +13,7 @@ class MeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "我的"
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -33,7 +34,7 @@ class MeTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 3
+        return 4
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,7 +45,9 @@ class MeTableViewController: UITableViewController {
         case 1:
             return 1
         case 2:
-            return 2
+            return 1
+        case 3:
+            return 1
         default:
             break
         }
@@ -57,13 +60,16 @@ class MeTableViewController: UITableViewController {
         if indexPath.section == 0{
         tableView.registerNib(UINib(nibName: "MyInformationTableViewCell", bundle:nil),forCellReuseIdentifier: "cell")
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! MyInformationTableViewCell
-            cell.Me_Info?.text = "家长姓名"
-            cell.Me_Username?.text = "用户名：*******"
-            let fullPath = ((NSHomeDirectory() as NSString) .stringByAppendingPathComponent("Documents") as NSString).stringByAppendingPathComponent("myicon.png")
+            cell.Me_Info?.text = NSUserDefaults.standardUserDefaults().valueForKey("ParentName") as? String
+            cell.Me_Username?.text = NSUserDefaults.standardUserDefaults().valueForKey("ParentUserName") as? String
+//            let fullPath = ((NSHomeDirectory() as NSString) .stringByAppendingPathComponent("Documents") as NSString).stringByAppendingPathComponent("myicon.png")
             //可选绑定,若保存过用户头像则显示之
-            if let savedImage = UIImage(contentsOfFile: fullPath){
-                cell.Me_image!.image = savedImage
-            }
+//            if let savedImage = UIImage(contentsOfFile: fullPath){
+//                cell.Me_image!.image = savedImage
+//            }else{
+        let g = Global()
+        let imagePosition = NSUserDefaults.standardUserDefaults().valueForKey("ImagePosition") as? String
+         cell.Me_image?.kf_setImageWithURL(NSURL(string:"http://\(g.IP):8080\(imagePosition! as String)")!)
             cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
             return cell
         
@@ -74,16 +80,18 @@ class MeTableViewController: UITableViewController {
             cell.Me_Detail?.hidden = true
             cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
             return cell
+        }else if indexPath.section == 2{
+            tableView.registerNib(UINib(nibName: "MeTableViewCell", bundle:nil),forCellReuseIdentifier: "cell")
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! MeTableViewCell
+            cell.Me_Name?.text = "设置"
+            cell.Me_Detail?.hidden = true
+            cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
+            return cell
         }else{
            tableView.registerNib(UINib(nibName: "ButtonTableViewCell", bundle:nil),forCellReuseIdentifier: "cell1")
            let cell = tableView.dequeueReusableCellWithIdentifier("cell1", forIndexPath: indexPath) as! ButtonTableViewCell
-            if indexPath.row == 1{
             cell.Button_Info?.text = "退出登录"
             cell.Button_Info?.textColor = UIColor.redColor()
-            }else{
-            cell.Button_Info?.text = "清除缓存"
-            cell.Button_Info?.textColor = UIColor.greenColor()
-            }
             cell.userInteractionEnabled = true
             cell.accessoryType=UITableViewCellAccessoryType.None
             return cell
@@ -98,6 +106,8 @@ class MeTableViewController: UITableViewController {
             return " "
         case 2:
             return " "
+        case 3:
+            return " "
         default:
             return ""
         }
@@ -110,15 +120,17 @@ class MeTableViewController: UITableViewController {
             vc.navigationItem.title = "头像选择"
             
             self.navigationController?.pushViewController(vc, animated: true)
-        }else if indexPath.section == 2 && indexPath.row == 0{
-//            let cache = Shared.imageCache
-//            cache.removeAll()
-//            let cache1 = Shared.dataCache
-//            cache1.removeAll()
-//            let cache2 = Shared.JSONCache
-//            cache2.removeAll()
-//            let cache3 = Shared.stringCache
-//            cache3.removeAll()
+        }else if indexPath.section == 2{
+            let vc = storyboard?.instantiateViewControllerWithIdentifier("SetIdentifier")
+            vc!.navigationItem.title = "设置"
+            
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }else if indexPath.section == 3{
+            NSUserDefaults.standardUserDefaults().removeObjectForKey("username")
+            NSUserDefaults.standardUserDefaults().removeObjectForKey("password")
+            NSUserDefaults.standardUserDefaults().setInteger(0, forKey: "login")
+            self.performSegueWithIdentifier("RelogIdentifier", sender: self)
+
         }
     }
     
@@ -129,6 +141,9 @@ class MeTableViewController: UITableViewController {
             return 40
         }
     }
+    
+   
+    
 
     /*
     // Override to support conditional editing of the table view.

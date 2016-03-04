@@ -19,10 +19,14 @@ class MessageDetailTableViewController: UITableViewController,UITextViewDelegate
     var textView: UITextView!
     var sendButton: UIButton!
 
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.keyboardDismissMode = .Interactive
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        notificationCenter.addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
+        
         tableView.registerNib(UINib(nibName: "MessageDetailTableViewCell", bundle:nil),forCellReuseIdentifier: "cell")
         firstcell = tableView.dequeueReusableCellWithIdentifier("cell") as? MessageDetailTableViewCell
 
@@ -31,6 +35,53 @@ class MessageDetailTableViewController: UITableViewController,UITextViewDelegate
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        
+        let userInfo = notification.userInfo as NSDictionary!
+        let frameNew = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        let insetNewBottom = tableView.convertRect(frameNew, fromView: nil).height
+        let insetOld = tableView.contentInset
+        let insetChange = insetNewBottom - insetOld.bottom
+        let overflow = tableView.contentSize.height - (tableView.frame.height-insetOld.top-insetOld.bottom)
+        
+        let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        let animations: (() -> Void) = {
+            if !(self.tableView.tracking || self.tableView.decelerating) {
+                // 根据键盘位置调整Inset
+                if overflow > 0 {
+                    self.tableView.contentOffset.y += insetChange
+                    if self.tableView.contentOffset.y < -insetOld.top {
+                        self.tableView.contentOffset.y = -insetOld.top
+                    }
+                } else if insetChange > -overflow {
+                    self.tableView.contentOffset.y += insetChange + overflow
+                }
+            }
+        }
+        if duration > 0 {
+            let options = UIViewAnimationOptions(rawValue: UInt((userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).integerValue << 16))
+            UIView.animateWithDuration(duration, delay: 0, options: options, animations: animations, completion: nil)
+        } else {
+            animations()
+        }
+    }
+    
+    
+    func keyboardDidShow(notification: NSNotification) {
+        let userInfo = notification.userInfo as NSDictionary!
+        let frameNew = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        let insetNewBottom = tableView.convertRect(frameNew, fromView: nil).height
+        
+        //根据键盘高度设置Inset
+        let contentOffsetY = tableView.contentOffset.y
+        tableView.contentInset.bottom = insetNewBottom
+        tableView.scrollIndicatorInsets.bottom = insetNewBottom
+        // 优化，防止键盘消失后tableview有跳跃
+        if self.tableView.tracking || self.tableView.decelerating {
+            tableView.contentOffset.y = contentOffsetY
+        }
     }
     
     
