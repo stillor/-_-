@@ -109,7 +109,7 @@ class MessageDetailTableViewController: UITableViewController,UITextViewDelegate
                 toolBar.addSubview(textView)
                 
                 sendButton = UIButton(type: UIButtonType.Custom)
-                sendButton.enabled = false
+                sendButton.enabled = true
                 sendButton.titleLabel?.font = UIFont.boldSystemFontOfSize(17)
                 sendButton.setTitle("发送", forState: .Normal)
                 sendButton.setTitleColor(UIColor(red: 142/255, green: 142/255, blue: 147/255, alpha: 1), forState: .Disabled)
@@ -140,6 +140,10 @@ class MessageDetailTableViewController: UITableViewController,UITextViewDelegate
     }
     override func canBecomeFirstResponder() -> Bool {
         return true
+    }
+    
+    func sendAction(){
+        print("发送成功")
     }
 
 

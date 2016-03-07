@@ -9,5 +9,5 @@
 import Foundation
 
 class Global{
-    let IP = "192.168.43.157"
+    let IP = "172.29.43.9"
 }

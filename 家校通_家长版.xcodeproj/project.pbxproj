@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2915F8D11C8010BA00127247 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2915F8D01C8010BA00127247 /* SCLAlertView.swift */; };
 		2915F92C1C80360E00127247 /* PandectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2915F92A1C80360E00127247 /* PandectTableViewCell.swift */; };
 		2915F92F1C80365700127247 /* PandectTableViewController(放弃).swift in Sources */ = {isa = PBXBuildFile; fileRef = 2915F92E1C80365700127247 /* PandectTableViewController(放弃).swift */; };
 		2915F9331C80380100127247 /* PandectViewController(放弃).swift in Sources */ = {isa = PBXBuildFile; fileRef = 2915F9321C80380100127247 /* PandectViewController(放弃).swift */; };
@@ -15,12 +14,14 @@
 		291646581C7B040A007EBD16 /* CommunicationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291646571C7B040A007EBD16 /* CommunicationTableViewController.swift */; };
 		29168C831C895A0900BF5D61 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29168C821C895A0900BF5D61 /* LaunchViewController.swift */; };
 		294D37D71C82815800019DDA /* Pandect_ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294D37D61C82815800019DDA /* Pandect_ButtonTableViewCell.swift */; };
+		2953CB411C8D1C7A0009A8C1 /* CarouselBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2953CB3D1C8D1C7A0009A8C1 /* CarouselBannerView.swift */; };
+		2953CB431C8D1C7A0009A8C1 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2953CB3F1C8D1C7A0009A8C1 /* SCLAlertView.swift */; };
+		2953CB441C8D1C7A0009A8C1 /* UITextField+LTBouncyPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2953CB401C8D1C7A0009A8C1 /* UITextField+LTBouncyPlaceholder.swift */; };
+		2953CC371C8D29210009A8C1 /* SignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2953CC361C8D29210009A8C1 /* SignViewController.swift */; };
 		295463FA1C891C1300E17DAE /* Student_Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295463F91C891C1300E17DAE /* Student_Score.swift */; };
 		295464101C8920F400E17DAE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2954640F1C8920F400E17DAE /* LoginViewController.swift */; };
 		295464121C8925D400E17DAE /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295464111C8925D400E17DAE /* Global.swift */; };
-		2977D7931C813E1600ED1544 /* MCMHeaderAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2977D7921C813E1600ED1544 /* MCMHeaderAnimated.swift */; };
 		298021D81C83E2BA0039C7F1 /* AllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298021D71C83E2BA0039C7F1 /* AllTableViewController.swift */; };
-		298021E01C83F38C0039C7F1 /* UITextField+LTBouncyPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298021DF1C83F38C0039C7F1 /* UITextField+LTBouncyPlaceholder.swift */; };
 		298564601C7BF4040089D7E9 /* AttendanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2985645E1C7BF4040089D7E9 /* AttendanceTableViewCell.swift */; };
 		298564611C7BF4040089D7E9 /* AttendanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2985645F1C7BF4040089D7E9 /* AttendanceTableViewCell.xib */; };
 		298564641C7BF4810089D7E9 /* ScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298564621C7BF4810089D7E9 /* ScoreTableViewCell.swift */; };
@@ -32,7 +33,6 @@
 		298FC0371C8564DE00A9B71E /* AllTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298FC0351C8564DE00A9B71E /* AllTableViewCell.swift */; };
 		298FC0381C8564DE00A9B71E /* AllTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 298FC0361C8564DE00A9B71E /* AllTableViewCell.xib */; };
 		298FC03E1C856ADD00A9B71E /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298FC03D1C856ADD00A9B71E /* ChatTableViewController.swift */; };
-		298FC0461C8587FA00A9B71E /* CarouselBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298FC0451C8587FA00A9B71E /* CarouselBannerView.swift */; };
 		299008181C7D57A900843360 /* HomeworkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299008171C7D57A900843360 /* HomeworkTableViewController.swift */; };
 		299359491C79556900947518 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299359481C79556900947518 /* AppDelegate.swift */; };
 		2993594B1C79556900947518 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2993594A1C79556900947518 /* ViewController.swift */; };
@@ -71,7 +71,6 @@
 		29DD3EAB1C7D7BA1000A2986 /* MeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DD3EAA1C7D7BA1000A2986 /* MeTableViewController.swift */; };
 		29DD3EAE1C7D86C7000A2986 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DD3EAC1C7D86C7000A2986 /* ButtonTableViewCell.swift */; };
 		29DD3EAF1C7D86C7000A2986 /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29DD3EAD1C7D86C7000A2986 /* ButtonTableViewCell.xib */; };
-		29FAA7B81C85258500D71CEC /* MCMHeaderAnimated.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29FAA7B51C85257D00D71CEC /* MCMHeaderAnimated.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		29FAA7BA1C8533C100D71CEC /* ChatViewController(无用).swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FAA7B91C8533C100D71CEC /* ChatViewController(无用).swift */; };
 /* End PBXBuildFile section */
 
@@ -244,20 +243,6 @@
 			remoteGlobalIDString = D1ED2D341AD2D09F00CFC3EB;
 			remoteInfo = "Kingfisher-iOS";
 		};
-		29FAA7B41C85257D00D71CEC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29FAA7AF1C85257D00D71CEC /* MCMHeaderAnimated.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0512363C1B0C00FD00F95AC6;
-			remoteInfo = MCMHeaderAnimated;
-		};
-		29FAA7B61C85257D00D71CEC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29FAA7AF1C85257D00D71CEC /* MCMHeaderAnimated.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 051236471B0C00FD00F95AC6;
-			remoteInfo = MCMHeaderAnimatedTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -287,7 +272,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2915F8D01C8010BA00127247 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = SOURCE_ROOT; };
 		2915F92A1C80360E00127247 /* PandectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PandectTableViewCell.swift; sourceTree = "<group>"; };
 		2915F92E1C80365700127247 /* PandectTableViewController(放弃).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PandectTableViewController(放弃).swift"; sourceTree = "<group>"; };
 		2915F9321C80380100127247 /* PandectViewController(放弃).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PandectViewController(放弃).swift"; sourceTree = "<group>"; };
@@ -295,12 +279,14 @@
 		291646571C7B040A007EBD16 /* CommunicationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationTableViewController.swift; sourceTree = "<group>"; };
 		29168C821C895A0900BF5D61 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		294D37D61C82815800019DDA /* Pandect_ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pandect_ButtonTableViewCell.swift; sourceTree = "<group>"; };
+		2953CB3D1C8D1C7A0009A8C1 /* CarouselBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselBannerView.swift; sourceTree = SOURCE_ROOT; };
+		2953CB3F1C8D1C7A0009A8C1 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = SOURCE_ROOT; };
+		2953CB401C8D1C7A0009A8C1 /* UITextField+LTBouncyPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+LTBouncyPlaceholder.swift"; sourceTree = SOURCE_ROOT; };
+		2953CC361C8D29210009A8C1 /* SignViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; };
 		295463F91C891C1300E17DAE /* Student_Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student_Score.swift; sourceTree = "<group>"; };
 		2954640F1C8920F400E17DAE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		295464111C8925D400E17DAE /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
-		2977D7921C813E1600ED1544 /* MCMHeaderAnimated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MCMHeaderAnimated.swift; path = "../../../../Downloads/MCMHeaderAnimated-swift-2.0/Source/MCMHeaderAnimated.swift"; sourceTree = "<group>"; };
 		298021D71C83E2BA0039C7F1 /* AllTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTableViewController.swift; sourceTree = "<group>"; };
-		298021DF1C83F38C0039C7F1 /* UITextField+LTBouncyPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextField+LTBouncyPlaceholder.swift"; path = "../../../../Downloads/LTBouncyPlaceholder-master/LTBouncyPlaceholder/UITextField+LTBouncyPlaceholder.swift"; sourceTree = "<group>"; };
 		2985645E1C7BF4040089D7E9 /* AttendanceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceTableViewCell.swift; sourceTree = "<group>"; };
 		2985645F1C7BF4040089D7E9 /* AttendanceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendanceTableViewCell.xib; sourceTree = "<group>"; };
 		298564621C7BF4810089D7E9 /* ScoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreTableViewCell.swift; sourceTree = "<group>"; };
@@ -312,7 +298,6 @@
 		298FC0351C8564DE00A9B71E /* AllTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTableViewCell.swift; sourceTree = "<group>"; };
 		298FC0361C8564DE00A9B71E /* AllTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllTableViewCell.xib; sourceTree = "<group>"; };
 		298FC03D1C856ADD00A9B71E /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
-		298FC0451C8587FA00A9B71E /* CarouselBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarouselBannerView.swift; path = "../../../../Downloads/CarouselBannerView-master/CarouselBanner/CarouselBannerView.swift"; sourceTree = "<group>"; };
 		299008171C7D57A900843360 /* HomeworkTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeworkTableViewController.swift; sourceTree = "<group>"; };
 		299359451C79556900947518 /* 家校通_家长版.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "家校通_家长版.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		299359481C79556900947518 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -355,7 +340,6 @@
 		29DD3EAA1C7D7BA1000A2986 /* MeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeTableViewController.swift; sourceTree = "<group>"; };
 		29DD3EAC1C7D86C7000A2986 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		29DD3EAD1C7D86C7000A2986 /* ButtonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonTableViewCell.xib; sourceTree = "<group>"; };
-		29FAA7AF1C85257D00D71CEC /* MCMHeaderAnimated.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MCMHeaderAnimated.xcodeproj; path = "../../../Downloads/MCMHeaderAnimated-swift-2.0/MCMHeaderAnimated/MCMHeaderAnimated.xcodeproj"; sourceTree = "<group>"; };
 		29FAA7B91C8533C100D71CEC /* ChatViewController(无用).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatViewController(无用).swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -366,7 +350,6 @@
 			files = (
 				29BCF1511C87D43B00EDD35A /* SnapKit.framework in Frameworks */,
 				29C68FBF1C85407000B5EA85 /* PNChartSwift.framework in Frameworks */,
-				29FAA7B81C85258500D71CEC /* MCMHeaderAnimated.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,13 +370,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2953CB281C8D1C630009A8C1 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				2953CB3D1C8D1C7A0009A8C1 /* CarouselBannerView.swift */,
+				2953CB3F1C8D1C7A0009A8C1 /* SCLAlertView.swift */,
+				2953CB401C8D1C7A0009A8C1 /* UITextField+LTBouncyPlaceholder.swift */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
 		2993593C1C79556900947518 = {
 			isa = PBXGroup;
 			children = (
 				29BCF12D1C87D43100EDD35A /* SnapKit.xcodeproj */,
 				29DA05081C8676B7008E3870 /* Kingfisher.xcodeproj */,
 				29C68FB41C85406900B5EA85 /* PNChartSwift.xcodeproj */,
-				29FAA7AF1C85257D00D71CEC /* MCMHeaderAnimated.xcodeproj */,
 				299359471C79556900947518 /* 家校通_家长版 */,
 				2993595F1C79556A00947518 /* 家校通_家长版Tests */,
 				2993596A1C79556A00947518 /* 家校通_家长版UITests */,
@@ -414,7 +406,7 @@
 		299359471C79556900947518 /* 家校通_家长版 */ = {
 			isa = PBXGroup;
 			children = (
-				2999CEAC1C7A9F0B002D0A61 /* Lib */,
+				2953CB281C8D1C630009A8C1 /* lib */,
 				2999CEAB1C7A9F04002D0A61 /* View */,
 				2999CEAA1C7A9EF7002D0A61 /* Controller */,
 				2999CEA91C7A9EBF002D0A61 /* Model */,
@@ -477,6 +469,7 @@
 				29DA055C1C86C7EE008E3870 /* MessageDetailTableViewController.swift */,
 				2954640F1C8920F400E17DAE /* LoginViewController.swift */,
 				29168C821C895A0900BF5D61 /* LaunchViewController.swift */,
+				2953CC361C8D29210009A8C1 /* SignViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -516,17 +509,6 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		2999CEAC1C7A9F0B002D0A61 /* Lib */ = {
-			isa = PBXGroup;
-			children = (
-				298FC0451C8587FA00A9B71E /* CarouselBannerView.swift */,
-				298021DF1C83F38C0039C7F1 /* UITextField+LTBouncyPlaceholder.swift */,
-				2977D7921C813E1600ED1544 /* MCMHeaderAnimated.swift */,
-				2915F8D01C8010BA00127247 /* SCLAlertView.swift */,
-			);
-			name = Lib;
-			sourceTree = "<group>";
-		};
 		29BCF12E1C87D43100EDD35A /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -564,15 +546,6 @@
 				29DA052A1C8676B7008E3870 /* KingfisherTests.xctest */,
 				29DA052C1C8676B7008E3870 /* KingfisherTests-tvOS.xctest */,
 				29DA052E1C8676B7008E3870 /* KingfisherTests-OSX.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		29FAA7B01C85257D00D71CEC /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				29FAA7B51C85257D00D71CEC /* MCMHeaderAnimated.framework */,
-				29FAA7B71C85257D00D71CEC /* MCMHeaderAnimatedTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -678,10 +651,6 @@
 				{
 					ProductGroup = 29DA05091C8676B7008E3870 /* Products */;
 					ProjectRef = 29DA05081C8676B7008E3870 /* Kingfisher.xcodeproj */;
-				},
-				{
-					ProductGroup = 29FAA7B01C85257D00D71CEC /* Products */;
-					ProjectRef = 29FAA7AF1C85257D00D71CEC /* MCMHeaderAnimated.xcodeproj */;
 				},
 				{
 					ProductGroup = 29C68FB51C85406900B5EA85 /* Products */;
@@ -842,20 +811,6 @@
 			remoteRef = 29DA052D1C8676B7008E3870 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		29FAA7B51C85257D00D71CEC /* MCMHeaderAnimated.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = MCMHeaderAnimated.framework;
-			remoteRef = 29FAA7B41C85257D00D71CEC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		29FAA7B71C85257D00D71CEC /* MCMHeaderAnimatedTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = MCMHeaderAnimatedTests.xctest;
-			remoteRef = 29FAA7B61C85257D00D71CEC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -909,16 +864,14 @@
 				29DA05641C86C922008E3870 /* MessageResponseTableViewCell.swift in Sources */,
 				29D94C7A1C7C25FB00A5708C /* AttendanceTableViewController.swift in Sources */,
 				298564641C7BF4810089D7E9 /* ScoreTableViewCell.swift in Sources */,
-				2915F8D11C8010BA00127247 /* SCLAlertView.swift in Sources */,
 				29DD3EA81C7D7B8E000A2986 /* MeTableViewCell.swift in Sources */,
-				298FC0461C8587FA00A9B71E /* CarouselBannerView.swift in Sources */,
+				2953CC371C8D29210009A8C1 /* SignViewController.swift in Sources */,
 				298564601C7BF4040089D7E9 /* AttendanceTableViewCell.swift in Sources */,
 				295464121C8925D400E17DAE /* Global.swift in Sources */,
 				299359511C79556900947518 /* _______.xcdatamodeld in Sources */,
 				2915F92F1C80365700127247 /* PandectTableViewController(放弃).swift in Sources */,
 				291646561C7B03E6007EBD16 /* StudentTableViewController.swift in Sources */,
 				29DD3EAE1C7D86C7000A2986 /* ButtonTableViewCell.swift in Sources */,
-				2977D7931C813E1600ED1544 /* MCMHeaderAnimated.swift in Sources */,
 				29DA054A1C86C2A1008E3870 /* MessageTableViewController.swift in Sources */,
 				29DA05391C868023008E3870 /* NewsTableViewCell.swift in Sources */,
 				29BC96BE1C82BD620031A0C6 /* ImageSelectViewController.swift in Sources */,
@@ -931,6 +884,7 @@
 				2915F92C1C80360E00127247 /* PandectTableViewCell.swift in Sources */,
 				2993594B1C79556900947518 /* ViewController.swift in Sources */,
 				29D94C7D1C7C301100A5708C /* HomeworkTableViewCell.swift in Sources */,
+				2953CB411C8D1C7A0009A8C1 /* CarouselBannerView.swift in Sources */,
 				29DA055D1C86C7EE008E3870 /* MessageDetailTableViewController.swift in Sources */,
 				298564721C7C042E0089D7E9 /* StudentTableViewCell.swift in Sources */,
 				295464101C8920F400E17DAE /* LoginViewController.swift in Sources */,
@@ -939,12 +893,13 @@
 				299359491C79556900947518 /* AppDelegate.swift in Sources */,
 				2915F9331C80380100127247 /* PandectViewController(放弃).swift in Sources */,
 				29D355651C82A1B30060425B /* MyInformationTableViewCell.swift in Sources */,
+				2953CB441C8D1C7A0009A8C1 /* UITextField+LTBouncyPlaceholder.swift in Sources */,
 				29DD3EAB1C7D7BA1000A2986 /* MeTableViewController.swift in Sources */,
 				295463FA1C891C1300E17DAE /* Student_Score.swift in Sources */,
 				298FC0371C8564DE00A9B71E /* AllTableViewCell.swift in Sources */,
 				29DA053D1C868D04008E3870 /* MessageTableViewCell.swift in Sources */,
+				2953CB431C8D1C7A0009A8C1 /* SCLAlertView.swift in Sources */,
 				29FAA7BA1C8533C100D71CEC /* ChatViewController(无用).swift in Sources */,
-				298021E01C83F38C0039C7F1 /* UITextField+LTBouncyPlaceholder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
