@@ -91,6 +91,7 @@ class ImageSelectViewController: UIViewController,UIImagePickerControllerDelegat
         let savedImage = UIImage(contentsOfFile: fullPath)
         self.icon!.image=savedImage
         picker.dismissViewControllerAnimated(true, completion: nil)
+        self.upload(savedImage!)
     }
     func saveImage(currentImage:UIImage,imageName:String){
         var imageData = NSData()
@@ -102,11 +103,42 @@ class ImageSelectViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     func upload(image:UIImage){
-        let data = UIImagePNGRepresentation(image)
+        let data:NSData = UIImagePNGRepresentation(image)!
+        let url:NSURL = NSURL(string: "http://192.168.43.157:8080/FSC/ParentServlet?AC=imageUpload")!;
         
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url);
+        request.HTTPMethod = "POST"
+        let boundary = "=-------------="
+        let contentType:String="multipart/form-data;boundary="+boundary
+        request.addValue(contentType, forHTTPHeaderField:"Content-Type")
+        let body=NSMutableData()
+        body.appendData(NSString(format:"\r\n(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(NSString(format:"Content-Disposition:form-data;name=\"file1\";filename=\"myicon.png\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(NSString(format:"Content-Type:application/octet-stream\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(data)
+        body.appendData(NSString(format:"\r\n(boundary)").dataUsingEncoding(NSUTF8StringEncoding)!)
+        print(body)
+        request.HTTPBody = body
+        let que=NSOperationQueue()
+        NSURLConnection.sendAsynchronousRequest(request, queue: que, completionHandler: {
+            (response, data, error) ->Void in
+            if (error != nil){
+                print(error)
+            }else{
+                //Handle data in NSData type
+                let tr:String=NSString(data:data!,encoding:NSUTF8StringEncoding)! as String
+                print(tr)
+                //在主线程中更新UI风火轮才停止
+                dispatch_sync(dispatch_get_main_queue(), {
+                    print("jahajahj")
+                    //self.av.stopAnimating()
+                    //self.lb.hidden=true
+                    
+                })
+                
+            }
+        })
     }
-    
-
     /*
     // MARK: - Navigation
 
