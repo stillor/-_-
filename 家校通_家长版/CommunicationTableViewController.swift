@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Alamofire
 
 class CommunicationTableViewController: UITableViewController {
-    let Contacts = ["班主任","语文老师","数学老师","英语老师"]
+    var Contacts = [teacher(userName: "", name: "", type: "", course: "")]
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,7 +23,7 @@ class CommunicationTableViewController: UITableViewController {
          let customFont = UIFont(name: "heiti SC", size: 13.0)
          UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont!], forState: UIControlState.Normal)
          UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
-        
+         getTeacher()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -51,7 +52,7 @@ class CommunicationTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return Contacts.count
         }
 
     
@@ -60,7 +61,24 @@ class CommunicationTableViewController: UITableViewController {
         tableView.registerNib(UINib(nibName: "CommunicationTableViewCell", bundle:nil),forCellReuseIdentifier: "cell")
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CommunicationTableViewCell
         cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
-        cell.Communication_info?.text = Contacts[indexPath.row]
+        cell.Communication_name?.text = Contacts[indexPath.row].name
+        if Contacts[indexPath.row].type == "0"{
+            if Contacts[indexPath.row].course == "0"{
+                cell.Communication_info?.text = "班主任(语文)"
+            }else if Contacts[indexPath.row].course == "1"{
+                cell.Communication_info?.text = "班主任(数学)"
+            }else{
+                cell.Communication_info?.text = "班主任(英语)"
+            }
+        }else{
+            if Contacts[indexPath.row].course == "1"{
+                cell.Communication_info?.text = "语文老师"
+            }else if Contacts[indexPath.row].course == "1"{
+                cell.Communication_info?.text = "数学老师"
+            }else{
+                cell.Communication_info?.text = "英语老师"
+            }
+        }
         return cell
     }
     
@@ -73,9 +91,61 @@ class CommunicationTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let vc = storyboard?.instantiateViewControllerWithIdentifier("MessageIdentifier") as! MessageTableViewController
-        vc.navigationItem.title = Contacts[indexPath.row]
+        vc.navigationItem.title = Contacts[indexPath.row].name
+        vc.user = Contacts[indexPath.row].name
+        if Contacts[indexPath.row].type == "0"{
+            if Contacts[indexPath.row].course == "0"{
+                vc.teacher = "班主任(语文)"
+            }else if Contacts[indexPath.row].course == "1"{
+                vc.teacher = "班主任(数学)"
+            }else{
+                vc.teacher = "班主任(英语)"
+            }
+        }else{
+            if Contacts[indexPath.row].course == "1"{
+                vc.teacher = "语文老师"
+            }else if Contacts[indexPath.row].course == "1"{
+                vc.teacher = "数学老师"
+            }else{
+                vc.teacher = "英语老师"
+            }
+        }
+
         self.navigationController?.pushViewController(vc, animated: true)
        
+    }
+    
+    
+    func getTeacher(){
+        let global = Global()
+        Alamofire.request(.POST, "http://\(global.IP):8080/FSC/ParentServlet?AC=getTeacherList", parameters: nil)
+            .response { request, response, data, error in
+                if data != nil{
+            do{
+                let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
+                let teacherList = json.objectForKey("teacherList")
+                for var i = 0; i<teacherList?.count;i+=1{
+                    let um = teacherList?.objectAtIndex(i).objectForKey("userName") as! String
+                    let n = teacherList?.objectAtIndex(i).objectForKey("name") as! String
+                    let t = teacherList?.objectAtIndex(i).objectForKey("type") as! String
+                    let c = teacherList?.objectAtIndex(i).objectForKey("course") as! String
+                    let tea = teacher(userName: um, name: n, type: t, course: c)
+                    if i == 0{
+                        self.Contacts[0] = tea
+                    }else{
+                        self.Contacts.append(tea)
+                    }
+                }
+                        
+                    }catch let erro{
+                        print("Something is worry with \(erro)")
+                        
+                    }
+                    
+                }
+                self.tableView.reloadData()
+        }
+        
     }
 
     /*

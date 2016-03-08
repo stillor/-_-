@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Alamofire
 
 class MessageTableViewController: UITableViewController {
-
+    var Message = [message(title: "", themeID: "", date: "", content: "")]
+    var user:String?
+    var teacher:String?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        getMessage()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -34,7 +37,7 @@ class MessageTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return Message.count
     }
 
 
@@ -43,10 +46,10 @@ class MessageTableViewController: UITableViewController {
         tableView.registerNib(UINib(nibName: "MessageTableViewCell", bundle:nil),forCellReuseIdentifier: "cell")
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! MessageTableViewCell
         cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
-        cell.Message_name?.text = "西北大学附属中学"
-        cell.Message_info?.text = "霍勇博同学遵纪守法，是优秀学生"
+        cell.Message_name?.text = Message[indexPath.row].title
+        cell.Message_info?.text = Message[indexPath.row].content
         cell.Message_info?.textColor = UIColor.grayColor()
-        cell.Message_date?.text = "2016-02-21"
+        cell.Message_date?.text = Message[indexPath.row].date
         cell.Message_date?.textColor = UIColor.grayColor()
         return cell
     }
@@ -58,9 +61,46 @@ class MessageTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let vc = storyboard?.instantiateViewControllerWithIdentifier("MessageTableIdentifier") as! MessageDetailTableViewController
-        vc.navigationItem.title = "主题"
+        vc.navigationItem.title = "具体内容"
+        vc.theme = self.Message[indexPath.row].themeID
+        vc.content = self.Message[indexPath.row].content
+        vc.tit = self.Message[indexPath.row].title
+        vc.date = self.Message[indexPath.row].date
+        vc.teacher = self.teacher
         vc.hidesBottomBarWhenPushed = true
+        
         self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
+    func getMessage(){
+        let global = Global()
+        Alamofire.request(.POST, "http://\(global.IP):8080/FSC/ParentServlet?AC=getThemeListJSON", parameters: ["userName":self.user!])
+            .response { request, response, data, error in
+        if data != nil{
+        do{
+            let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
+            let mess = json.objectForKey("message")
+            for var i = 0;i<mess?.count;i+=1{
+             let t = mess?.objectAtIndex(i).objectForKey("title") as! String
+             let th = mess?.objectAtIndex(i).objectForKey("themeID") as! String
+            let d = mess?.objectAtIndex(i).objectForKey("date") as! String
+            let c = mess?.objectAtIndex(i).objectForKey("content") as! String
+            let me = message(title: t, themeID: th, date: d, content: c)
+                if i == 0{
+                    self.Message[0] = me
+                }else{
+                    self.Message.append(me)
+                }
+            }
+                    }catch let erro{
+                        print("Something is worry with \(erro)")
+                        
+                    }
+                    
+                }
+                self.tableView.reloadData()
+        }
         
     }
 

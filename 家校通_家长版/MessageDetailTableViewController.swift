@@ -8,17 +8,25 @@
 
 import UIKit
 import SnapKit
+import Alamofire
 
 let messageFontSize: CGFloat = 17
 let toolBarMinHeight: CGFloat = 50
 
 class MessageDetailTableViewController: UITableViewController,UITextViewDelegate {
+    
+    var theme:String?
+    var content:String?
+    var tit:String?
+    var date:String?
+    var teacher:String?
+    
     var firstcell:MessageDetailTableViewCell?
     
     var toolBar: UIToolbar!
     var textView: UITextView!
     var sendButton: UIButton!
-
+    var message = [detail(author: "", receiver: "", time: "", content: "")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +43,7 @@ class MessageDetailTableViewController: UITableViewController,UITextViewDelegate
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        getMessage()
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -165,18 +174,24 @@ class MessageDetailTableViewController: UITableViewController,UITextViewDelegate
 //        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! MessageDetailTableViewCell
         if indexPath.section == 0 {
         self.firstcell!.accessoryType=UITableViewCellAccessoryType.None
-        firstcell!.MessageDetail_name?.text = "西北大学附属中学三年级五班"
-        firstcell!.MessageDetail_date?.text = "2016-02-21"
-        firstcell!.MessageDetail_detail?.text = "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        firstcell!.MessageDetail_name?.text = self.tit
+        firstcell!.MessageDetail_date?.text = self.date
+        firstcell!.MessageDetail_detail?.text = self.content
         firstcell!.userInteractionEnabled = false
         return firstcell!
         }else{
             tableView.registerNib(UINib(nibName: "MessageResponseTableViewCell", bundle:nil),forCellReuseIdentifier: "cell1")
             let cell = tableView.dequeueReusableCellWithIdentifier("cell1", forIndexPath: indexPath) as! MessageResponseTableViewCell
             cell.accessoryType=UITableViewCellAccessoryType.None
-            cell.MessageResponse_name?.text = "霍勇博"
-            cell.MessageResponse_date?.text = "2016-02-21"
-            cell.MessageResponse_info?.text = "谢谢"
+            let user = NSUserDefaults.standardUserDefaults().valueForKey("ParentUserName") as! String
+            let name = NSUserDefaults.standardUserDefaults().valueForKey("ParentName") as! String
+            if self.message[indexPath.row].author == user{
+                cell.MessageResponse_name?.text = name
+            }else{
+              cell.MessageResponse_name?.text = self.teacher
+            }
+            cell.MessageResponse_date?.text = self.message[indexPath.row].time
+            cell.MessageResponse_info?.text = self.message[indexPath.row].content
             let fullPath = ((NSHomeDirectory() as NSString) .stringByAppendingPathComponent("Documents") as NSString).stringByAppendingPathComponent("myicon.png")
             //可选绑定,若保存过用户头像则显示之
             if let savedImage = UIImage(contentsOfFile: fullPath){
@@ -200,6 +215,39 @@ class MessageDetailTableViewController: UITableViewController,UITextViewDelegate
         }else{
             return ""
         }
+    }
+    
+    func getMessage(){
+        let global = Global()
+        Alamofire.request(.POST, "http://\(global.IP):8080/FSC/ParentServlet?AC=getMessageJSON", parameters: ["themeID":self.theme!])
+            .response { request, response, data, error in
+        if data != nil{
+            do{
+            let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
+            let mess = json.objectForKey("message_detail")
+                for var i = 0;i<mess?.count;i+=1{
+                let a = mess?.objectAtIndex(i).objectForKey("authorUserName") as! String
+                let r = mess?.objectAtIndex(i).objectForKey("receiverUserName") as! String
+                let t = mess?.objectAtIndex(i).objectForKey("time") as! String
+                let c = mess?.objectAtIndex(i).objectForKey("content") as! String
+                let de = detail(author: a, receiver: r, time: t, content: c)
+                    if i == 0{
+                        self.message[i] = de
+                    }else{
+                        self.message.append(de)
+                    }
+                }
+                
+                
+            }catch let erro{
+            print("Something is worry with \(erro)")
+                        
+            }
+                    
+        }
+      self.tableView.reloadData()
+        }
+
     }
 
     /*

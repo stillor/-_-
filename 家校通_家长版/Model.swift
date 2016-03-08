@@ -47,3 +47,45 @@ class reward{
     }
 }
 
+class teacher{
+    var userName:String?
+    var name:String?
+    var type:String?
+    var course:String?
+    
+    init(userName:String,name:String,type:String,course:String){
+        self.course = course
+        self.name = name
+        self.type = type
+        self.userName = userName
+    }
+}
+
+class message{
+    var title:String?
+    var themeID:String?
+    var date:String?
+    var content:String?
+    
+    init(title:String,themeID:String,date:String,content:String){
+        self.content = content
+        self.date = date
+        self.themeID = themeID
+        self.title = title
+    }
+}
+
+class detail{
+    var author:String?
+    var receiver:String?
+    var time:String?
+    var content:String?
+    
+    init(author:String,receiver:String,time:String,content:String){
+        self.content = content
+        self.author = author
+        self.receiver = receiver
+        self.time = time
+    }
+}
+

@@ -48,7 +48,12 @@ class SignViewController: UIViewController {
     var OK:Bool = false
     
     @IBAction func sure(){
-        makesure()
+        if username?.text != ""{
+           makesure()
+        }else{
+            self.tip_password?.text = "用户名不能为空"
+            self.tip_password?.textColor = UIColor.redColor()
+        }
     }
     
     //var req = NSMutableURLRequest.init()
@@ -91,16 +96,21 @@ class SignViewController: UIViewController {
             if data != nil{
                 do{
                     
-                    let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
-                    print(json)
+                let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
+                print(json)
+                    let result = json.objectForKey("Result") as! String
+                    if result == "Succeed"{
+            self.performSegueWithIdentifier("returnIdentifier", sender: self)
+                    }else{
                     let Error = json.objectForKey("Error") as! String
                     print(Error)
                     if Error != "" {
+                        self.tip_password?.text = Error
+                        self.tip_password?.textColor = UIColor.redColor()
                         self.getIdentify()
-                    }else{
-                        self.performSegueWithIdentifier("returnIdentifier", sender: self)
                     }
-                }catch let erro{
+                    }
+                    }catch let erro{
                     
                     print("Something is worry with \(erro)")
                     

@@ -10,6 +10,7 @@ import UIKit
 
 class CommunicationTableViewCell: UITableViewCell {
     @IBOutlet var Communication_info:UILabel?
+    @IBOutlet var Communication_name:UILabel?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

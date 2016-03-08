@@ -21,9 +21,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="西安交通学校" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRG-Ox-iDs">
-                                <rect key="frame" x="120" y="476" width="75" height="21"/>
+                                <rect key="frame" x="123" y="476" width="75" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="74f-ew-qbD"/>
+                                    <constraint firstAttribute="width" constant="75" id="fl5-8P-iqO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -33,11 +33,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zNr-5s-vMJ" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="1Ol-ze-ZBi"/>
-                            <constraint firstItem="MRG-Ox-iDs" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="456" id="AyR-Sk-iDu"/>
-                            <constraint firstItem="MRG-Ox-iDs" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="120" id="KtW-z0-A6W"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="MRG-Ox-iDs" secondAttribute="bottom" constant="71" id="6tx-ud-KGk"/>
+                            <constraint firstItem="MRG-Ox-iDs" firstAttribute="centerX" secondItem="zNr-5s-vMJ" secondAttribute="centerX" id="K01-i6-TpM"/>
                             <constraint firstItem="zNr-5s-vMJ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Lbg-uf-wsj"/>
                             <constraint firstItem="zNr-5s-vMJ" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="LrO-iD-IBX"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="MRG-Ox-iDs" secondAttribute="bottom" constant="71" id="mMz-Qi-fA4"/>
+                            <constraint firstItem="MRG-Ox-iDs" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="456" id="V7K-SV-n8b"/>
                             <constraint firstAttribute="trailing" secondItem="zNr-5s-vMJ" secondAttribute="trailing" id="wws-2S-DEb"/>
                         </constraints>
                     </view>

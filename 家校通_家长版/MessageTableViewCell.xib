@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -31,9 +33,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bK1-qO-kPB">
-                        <rect key="frame" x="207" y="8" width="69" height="21"/>
+                        <rect key="frame" x="166" y="6" width="146" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="69" id="Nzj-34-QWx"/>
+                            <constraint firstAttribute="height" constant="21" id="QV3-b3-cQa"/>
+                            <constraint firstAttribute="width" constant="146" id="WoA-Wi-zMU"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -41,16 +44,15 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="bK1-qO-kPB" firstAttribute="leading" secondItem="bWA-aL-VwI" secondAttribute="trailing" constant="49" id="BB8-0i-bzd"/>
+                    <constraint firstItem="bK1-qO-kPB" firstAttribute="baseline" secondItem="bWA-aL-VwI" secondAttribute="firstBaseline" id="9rn-Az-x0u"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Beb-gD-AOc" secondAttribute="trailing" constant="43" id="GEn-p9-60k"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="bK1-qO-kPB" secondAttribute="trailing" constant="36" id="IZu-WT-fMZ"/>
-                    <constraint firstItem="Beb-gD-AOc" firstAttribute="top" secondItem="bK1-qO-kPB" secondAttribute="bottom" constant="8" symbolic="YES" id="KOS-1p-NYh"/>
+                    <constraint firstItem="bK1-qO-kPB" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Ofe-np-8ui"/>
                     <constraint firstItem="Beb-gD-AOc" firstAttribute="top" secondItem="bWA-aL-VwI" secondAttribute="bottom" constant="8" symbolic="YES" id="Qpm-J2-8bR"/>
+                    <constraint firstItem="bK1-qO-kPB" firstAttribute="leading" secondItem="bWA-aL-VwI" secondAttribute="trailing" constant="8" symbolic="YES" id="YAJ-mU-6vZ"/>
                     <constraint firstItem="Beb-gD-AOc" firstAttribute="leading" secondItem="bWA-aL-VwI" secondAttribute="leading" id="as3-40-Eca"/>
+                    <constraint firstItem="bK1-qO-kPB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-2" id="dCb-zx-YSE"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Beb-gD-AOc" secondAttribute="bottom" constant="-6.5" id="f0b-dh-4V8"/>
                     <constraint firstItem="bWA-aL-VwI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="gcQ-eB-8Nx"/>
-                    <constraint firstItem="bK1-qO-kPB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="mJH-qe-Otj"/>
-                    <constraint firstItem="bK1-qO-kPB" firstAttribute="top" secondItem="bWA-aL-VwI" secondAttribute="top" id="xbt-te-DN8"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

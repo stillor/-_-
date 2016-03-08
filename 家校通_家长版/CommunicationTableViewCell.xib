@@ -15,22 +15,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZb-lu-pOP">
+                        <rect key="frame" x="177" y="11" width="80" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgz-0L-GjQ">
-                        <rect key="frame" x="26" y="11" width="247" height="21"/>
+                        <rect key="frame" x="26" y="10" width="112" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="112" id="ALd-2g-2kP"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="rgz-0L-GjQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="18" id="RQf-WK-SDc"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="rgz-0L-GjQ" secondAttribute="trailing" constant="39" id="f0k-ii-YpI"/>
-                    <constraint firstItem="rgz-0L-GjQ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hg5-ng-sPb"/>
-                    <constraint firstItem="rgz-0L-GjQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="j68-qB-XBJ"/>
+                    <constraint firstItem="rgz-0L-GjQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="18" id="6SA-l1-OaQ"/>
+                    <constraint firstItem="rgz-0L-GjQ" firstAttribute="centerY" secondItem="HZb-lu-pOP" secondAttribute="centerY" id="DYE-nW-5a9"/>
+                    <constraint firstItem="rgz-0L-GjQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="OkK-Sk-KuU"/>
+                    <constraint firstItem="HZb-lu-pOP" firstAttribute="leading" secondItem="rgz-0L-GjQ" secondAttribute="trailing" constant="39" id="Rxj-ug-vTm"/>
+                    <constraint firstItem="HZb-lu-pOP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="oAN-E0-2S1"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="HZb-lu-pOP" secondAttribute="trailing" constant="55" id="xm1-BW-WOg"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="Communication_info" destination="rgz-0L-GjQ" id="S24-a3-bCH"/>
+                <outlet property="Communication_name" destination="HZb-lu-pOP" id="jT1-ro-2IO"/>
             </connections>
             <point key="canvasLocation" x="287" y="232"/>
         </tableViewCell>

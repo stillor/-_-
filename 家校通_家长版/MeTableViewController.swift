@@ -147,7 +147,7 @@ class MeTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0{
-            return 80
+            return 90
         }else{
             return 40
         }

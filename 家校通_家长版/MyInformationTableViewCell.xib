@@ -15,12 +15,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7gA-Hw-HV5">
-                        <rect key="frame" x="16" y="20" width="47" height="46"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="47" id="IJg-m4-csP"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Snh-Xs-Twr">
                         <rect key="frame" x="97" y="44" width="123" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -36,18 +30,24 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7gA-Hw-HV5">
+                        <rect key="frame" x="16" y="14" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="8hm-v6-44m"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="Snh-Xs-Twr" secondAttribute="bottom" constant="14.5" id="2hP-ue-Dq7"/>
                     <constraint firstItem="Snh-Xs-Twr" firstAttribute="leading" secondItem="uA2-By-n6r" secondAttribute="leading" id="8Qh-qX-brY"/>
                     <constraint firstItem="Snh-Xs-Twr" firstAttribute="top" secondItem="uA2-By-n6r" secondAttribute="bottom" constant="8" symbolic="YES" id="8us-Sf-d7w"/>
+                    <constraint firstItem="7gA-Hw-HV5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9ml-3S-sfh"/>
+                    <constraint firstItem="7gA-Hw-HV5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="CC7-bf-y2m"/>
                     <constraint firstAttribute="trailingMargin" secondItem="uA2-By-n6r" secondAttribute="trailing" constant="92" id="D9p-0X-tbS"/>
-                    <constraint firstItem="7gA-Hw-HV5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="DWj-Y9-MBt"/>
-                    <constraint firstItem="7gA-Hw-HV5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="EfL-Ns-uzm"/>
                     <constraint firstItem="uA2-By-n6r" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="G6Z-ft-0XK"/>
+                    <constraint firstItem="uA2-By-n6r" firstAttribute="leading" secondItem="7gA-Hw-HV5" secondAttribute="trailing" constant="21" id="HR1-ty-TYe"/>
                     <constraint firstItem="Snh-Xs-Twr" firstAttribute="trailing" secondItem="uA2-By-n6r" secondAttribute="trailing" id="NtC-EZ-daK"/>
-                    <constraint firstItem="7gA-Hw-HV5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="kz8-Pd-fIs"/>
-                    <constraint firstItem="uA2-By-n6r" firstAttribute="leading" secondItem="7gA-Hw-HV5" secondAttribute="trailing" constant="34" id="wru-pG-mbb"/>
+                    <constraint firstItem="7gA-Hw-HV5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="WXo-iQ-KRo"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
