@@ -7,20 +7,21 @@
 //
 
 import UIKit
+import Alamofire
 
 class ScoreTableViewController: UITableViewController {
     
-    let person = ["霍勇博","2131601039"]
-    let score = ["100","100","100"]
-    let rank = ["10","11"]
+    var person = ["**"," "]
+    var score = ["0","0","0"]
+    var rank = ["0","0"]
     
     let person_name = ["姓名：","学号："]
-    let score_name = ["数学：","语文：","英语："]
+    let score_name = ["语文：","数学：","英语："]
     let rank_name = ["班级排名：","年级排名："]
-
+    var exam:String?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.getScore()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -88,6 +89,32 @@ class ScoreTableViewController: UITableViewController {
             break
         }
         return ""
+    }
+    
+    
+    func getScore(){
+        let global = Global()
+        Alamofire.request(.POST, "http://\(global.IP):8080/FSC/ParentServlet?AC=getScoreJSON", parameters: ["type":self.exam!])
+            .response { request, response, data, error in
+        if data != nil{
+          do{
+            let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
+            self.person[0] = json.objectForKey("name") as! String
+            self.person[1] = json.objectForKey("stu_num") as! String
+            self.score[0] = json.objectForKey("Chinese") as! String
+            self.score[1] = json.objectForKey("math") as! String
+            self.score[2] = json.objectForKey("English") as! String
+            self.rank[0] = json.objectForKey("class_rank") as! String
+            self.rank[1] = json.objectForKey("grade_rank") as! String
+            
+            }catch let erro{
+            print("Something is worry with \(erro)")
+                        
+            }
+                    
+          }
+         self.tableView.reloadData()
+        }
     }
 
     /*

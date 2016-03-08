@@ -9,7 +9,7 @@
 import UIKit
 
 class AllTableViewCell: UITableViewCell {
-    @IBOutlet var All_info:UILabel?
+   // @IBOutlet var All_info:UILabel?
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -7,10 +7,10 @@
 //
 
 import UIKit
+import Alamofire
 
 class AttendanceTableViewController: UITableViewController {
-    
-    var flag:Int?
+    var Attendance
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,20 +31,12 @@ class AttendanceTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        if flag == 0{
-            return 3
-        }else{
-            return 1
-        }
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if flag == 0{
-            return 1
-        }else{
-            return 5
-        }
+        return 5
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -63,6 +55,34 @@ class AttendanceTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return ""
     }
+    
+    func getAttendance(){
+        let global = Global()
+        Alamofire.request(.POST, "http://\(global.IP):8080/FSC/ParentServlet?AC=getScoreTypeJSON", parameters: nil)
+            .response { request, response, data, error in
+                if data != nil{
+                    do{
+                        let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
+                        let scoreType = json.objectForKey("scoreType")
+                        for var i = 0; i < scoreType?.count; i+=1 {
+                            if i == 0{
+                                self.score[0] = scoreType!.objectAtIndex(i).objectForKey("type") as! String
+                            }else{
+                                self.score.append(scoreType!.objectAtIndex(i).objectForKey("type") as! String)
+                            }
+                        }
+                        
+                    }catch let erro{
+                        
+                        print("Something is worry with \(erro)")
+                        
+                    }
+                    
+                }
+                self.tableView.reloadData()
+        }
+    }
+
 
     /*
     // Override to support conditional editing of the table view.

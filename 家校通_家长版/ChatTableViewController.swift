@@ -8,14 +8,20 @@
 
 import UIKit
 import PNChartSwift
+import Alamofire
 
 class ChatTableViewController: UITableViewController {
     
     let course = ["语文成绩","数学成绩","英语成绩"]
+    var chinese:[CGFloat] = [0]
+    var math:[CGFloat] = [0]
+    var English:[CGFloat] = [0]
+    var exam:[String] = [""]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        getScore()
+        //self.getScore()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -44,11 +50,27 @@ class ChatTableViewController: UITableViewController {
         ChineseChart.yLabelFormat = "%1.1f"
         ChineseChart.showLabel = true
         ChineseChart.backgroundColor = UIColor.clearColor()
-        ChineseChart.xLabels = ["考试1","考试2","考试3","考试4","考试5","考试6","考试7"]
+        ChineseChart.xLabels = exam
         ChineseChart.showCoordinateAxis = true
         //        lineChart.delegate = self
         // Line Chart Nr.1
-        var ChineseArray: [CGFloat] = [80, 74, 90, 100, 99, 89, 100]
+        var ChineseArray: [CGFloat] = [0]
+        switch indexPath.section{
+        case 0:
+            ChineseArray = chinese
+            break
+        case 1:
+             ChineseArray = math
+            break
+        case 2:
+             ChineseArray = English
+            break
+        default:
+             ChineseArray = [0]
+            break
+        }
+        
+       // var ChineseArray: [CGFloat] = [80, 74, 90, 100, 99, 89, 100]
         let Chinesedata01:PNLineChartData = PNLineChartData()
         Chinesedata01.color = PNGreenColor
         Chinesedata01.itemCount = ChineseArray.count
@@ -65,6 +87,63 @@ class ChatTableViewController: UITableViewController {
         cell.addSubview(ChineseChart)
         cell.addSubview(ChineseLabel)
         return cell
+    }
+    
+    func getScore(){
+        let global = Global()
+//        Alamofire.request(.POST, "http://\(global.IP):8080/FSC/ParentServlet?AC=getHistoryScoreJSON", parameters: nil)
+//            .response { request, response, data, error in
+//        if data != nil{
+        let url:NSURL! = NSURL(string: "http://\(global.IP):8080/FSC/ParentServlet?AC=getHistoryScoreJSON")
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringCacheData, timeoutInterval: 10)
+            request.HTTPMethod = "POST"
+            var response:NSURLResponse?
+        do{
+        let data:NSData = try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)
+            
+         let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data, options:NSJSONReadingOptions.AllowFragments)
+        let chinese = json.objectForKey("Chinese")
+        for var i = 0; i < chinese?.count; i+=1 {
+                if i == 0{
+                  let str = chinese?.objectAtIndex(i).objectForKey("grade") as! String
+                  let f = (str as NSString).floatValue
+                  self.chinese[0] = CGFloat(Float(f))
+                }else{
+                let str = chinese?.objectAtIndex(i).objectForKey("grade") as! String
+                let f = (str as NSString).floatValue
+              self.chinese.append(CGFloat(Float(f)))
+            }
+          }
+            let math = json.objectForKey("math")
+            for var i = 0; i < math?.count; i+=1 {
+                if i == 0{
+                    let str = math?.objectAtIndex(i).objectForKey("grade") as! String
+                    let f = (str as NSString).floatValue
+                    self.math[0] = CGFloat(Float(f))
+                }else{
+                    let str = math?.objectAtIndex(i).objectForKey("grade") as! String
+                    let f = (str as NSString).floatValue
+                    self.math.append(CGFloat(Float(f)))
+                }            }
+            let English = json.objectForKey("English")
+            for var i = 0; i < English?.count; i+=1 {
+                if i == 0{
+                    let str = English?.objectAtIndex(i).objectForKey("grade") as! String
+                    let f = (str as NSString).floatValue
+                    self.English[0] = CGFloat(Float(f))
+                }else{
+                    let str = English?.objectAtIndex(i).objectForKey("grade") as! String
+                    let f = (str as NSString).floatValue
+                    self.English.append(CGFloat(Float(f)))
+                }
+            }
+                        
+        }catch let erro{
+                        
+         print("Something is worry with \(erro)")
+                        
+         }
+    
     }
     
 

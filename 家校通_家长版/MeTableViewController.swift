@@ -14,6 +14,16 @@ class MeTableViewController: UITableViewController {
         super.viewDidLoad()
         self.navigationItem.title = "我的"
         
+        self.navigationController?.navigationBar.barTintColor=UIColor(red: 70/255, green: 70/255, blue: 70/255, alpha: 1)
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        let navigationTitleAttribute: NSDictionary = NSDictionary(object: UIColor.whiteColor(), forKey: NSForegroundColorAttributeName)
+        
+        self.navigationController?.navigationBar.titleTextAttributes = navigationTitleAttribute as? [String : AnyObject]
+        
+        let customFont = UIFont(name: "heiti SC", size: 13.0)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont!], forState: UIControlState.Normal)
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -23,6 +33,7 @@ class MeTableViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         tableView.reloadData()
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
     }
 
     override func didReceiveMemoryWarning() {

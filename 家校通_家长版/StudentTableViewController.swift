@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import Alamofire
 
 class StudentTableViewController: UITableViewController {
     
     //@IBOutlet var seg:UISegmentedControl?
     let it = ["到勤","作业","成绩","奖罚"]
-    let score = ["第一学期期中考试","第一学期期末考试","第二学期期中考试","第二学期期末考试","历史成绩图示"]
-    let homework_chinese = "阅读课后文章，第128页习题5，6，7题，日记"
-    let homework_math = "第135页综合练习题1，2，3，4题"
-    let homework_english = "英语作文，抄写第四单元单词"
+    var score = [""]
+    var homework_chinese = ""
+    var homework_math = ""
+    var homework_english = ""
+    var attendance = ["","",""]
+    var reward = [""]
     var segment:UISegmentedControl?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,23 @@ class StudentTableViewController: UITableViewController {
         self.navigationItem.titleView = segment
         segment!.addTarget(self, action: "segmentChange", forControlEvents: UIControlEvents.ValueChanged)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: nil, action:nil)
+        
+        self.navigationController?.navigationBar.barTintColor=UIColor(red: 70/255, green: 70/255, blue: 70/255, alpha: 1)
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        let navigationTitleAttribute: NSDictionary = NSDictionary(object: UIColor.whiteColor(), forKey: NSForegroundColorAttributeName)
+        
+        self.navigationController?.navigationBar.titleTextAttributes = navigationTitleAttribute as? [String : AnyObject]
+        
+        let customFont = UIFont(name: "heiti SC", size: 13.0)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont!], forState: UIControlState.Normal)
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
+        getScore()
+        getOthers()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
     }
     
     func segmentChange(){
@@ -59,12 +79,12 @@ class StudentTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         if segment?.selectedSegmentIndex == 2{
             if section == 0{
-            return 4
+            return score.count
             }else{
             return 1
             }
         }else if segment?.selectedSegmentIndex == 3 && section == 0{
-            return 4
+            return reward.count
         }
         
         return 1
@@ -82,13 +102,15 @@ class StudentTableViewController: UITableViewController {
             cell.Student_detail?.hidden = false
             if indexPath.section != 3{
              cell.Student_info?.text = "霍勇博"
-             cell.Student_detail?.text = "已到"
+             cell.Student_detail?.text = self.attendance[indexPath.row]
             cell.userInteractionEnabled = false
              cell.Student_detail?.hidden = false
             cell.accessoryType = UITableViewCellAccessoryType.None
             }else{
              cell.Student_detail?.hidden = true
+             cell.Student_detail?.hidden = true
              cell.Student_info?.text = "历史到勤"
+             cell.userInteractionEnabled = true
             }
        // cell.userInteractionEnabled = false
 
@@ -133,7 +155,7 @@ class StudentTableViewController: UITableViewController {
             cell.userInteractionEnabled = true
             switch indexPath.section{
             case 0:
-                cell.Student_info?.text = "上课说话，迟到"
+                cell.Student_info?.text = reward[indexPath.row]
                 cell.userInteractionEnabled = false
                  cell.accessoryType = UITableViewCellAccessoryType.None
                 break
@@ -194,6 +216,13 @@ class StudentTableViewController: UITableViewController {
             break
         case 1:
             //let vc = storyboard?.instantiateViewControllerWithIdentifier("HomeworkIdentifier") as! HomeworkTableViewController
+            if homework_chinese == ""{
+                homework_chinese = "今日无作业"
+            }else if homework_math == ""{
+                homework_math = "今日无作业"
+            }else if homework_english == ""{
+                homework_math = "今日无作业"
+            }
             if indexPath.section == 0{
             //vc.navigationItem.title = "语文作业"
             SCLAlertView().showInfo("语文作业", subTitle: homework_chinese)
@@ -209,6 +238,7 @@ class StudentTableViewController: UITableViewController {
         case 2:
             if indexPath.section == 0{
             let vc = storyboard?.instantiateViewControllerWithIdentifier("ScoreIdentifier") as! ScoreTableViewController
+                vc.exam = score[indexPath.row]
                 vc.navigationItem.title = score[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: true)
             }else {
@@ -223,6 +253,70 @@ class StudentTableViewController: UITableViewController {
 //        let vc =       storyboard?.instantiateViewControllerWithIdentifier("DetailIdentifier") as! DetailTableViewController
         
     
+    }
+    
+    func getScore(){
+        let global = Global()
+        Alamofire.request(.POST, "http://\(global.IP):8080/FSC/ParentServlet?AC=getScoreTypeJSON", parameters: nil)
+            .response { request, response, data, error in
+            if data != nil{
+            do{
+            let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
+            let scoreType = json.objectForKey("scoreType")
+            for var i = 0; i < scoreType?.count; i+=1 {
+                if i == 0{
+                self.score[0] = scoreType!.objectAtIndex(i).objectForKey("type") as! String
+                }else{
+                self.score.append(scoreType!.objectAtIndex(i).objectForKey("type") as! String)
+                }
+             }
+                        
+            }catch let erro{
+                        
+             print("Something is worry with \(erro)")
+                        
+            }
+                    
+        }
+        self.tableView.reloadData()
+        }
+    }
+    
+    func getOthers(){
+        let global = Global()
+        Alamofire.request(.POST, "http://\(global.IP):8080/FSC/ParentServlet?AC=getSign_eward_homeworkJSON", parameters: nil)
+            .response { request, response, data, error in
+            if data != nil{
+            do{
+            let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
+            let sign = json.objectForKey("sign")
+            print(sign)
+            self.attendance[0] = sign?.objectAtIndex(0).objectForKey("moring") as! String
+            self.attendance[1] = sign?.objectAtIndex(0).objectForKey("afternoon") as! String
+
+            self.attendance[2] = sign?.objectAtIndex(0).objectForKey("evening")as! String
+            let reward = json.objectForKey("reward")
+            print(reward)
+                for var i = 0;i < reward!.count; i+=1{
+                    if i == 0 {
+                        self.reward[i] = reward?.objectAtIndex(i).objectForKey("reward") as! String
+                    }else{
+                      self.reward.append(reward?.objectAtIndex(i).objectForKey("reward") as! String)
+                    }
+                }
+            let homework = json.objectForKey("homework")
+            print(homework)
+            self.homework_chinese = homework?.objectAtIndex(0).objectForKey("content") as! String
+             self.homework_math = homework?.objectAtIndex(1).objectForKey("content") as! String
+             self.homework_english = homework?.objectAtIndex(2).objectForKey("content") as! String
+
+         }catch let erro{
+        print("Something is worry with \(erro)")
+        }
+        }
+        self.tableView.reloadData()
+        }
+  
     }
 
     /*

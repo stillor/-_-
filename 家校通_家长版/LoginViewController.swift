@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var username:UITextField?
     @IBOutlet var password:UITextField?
     @IBOutlet var tip:UILabel?
+    @IBOutlet var log:UIButton?
     
     var name:String?
     var pass:String?
@@ -74,7 +75,7 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.log?.backgroundColor = UIColor.blueColor()
         // Do any additional setup after loading the view.
     }
     

@@ -6,6 +6,7 @@
 //  Copyright © 2016年 stiller. All rights reserved.
 //
 import UIKit
+import Alamofire
 
 class ImageSelectViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     @IBOutlet var icon:UIImageView?
@@ -103,8 +104,13 @@ class ImageSelectViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     func upload(image:UIImage){
+        let g = Global()
+//        let fullPath = ((NSHomeDirectory() as NSString).stringByAppendingPathComponent("Documents") as NSString).stringByAppendingPathComponent("myicon.png")
+//        var fileURL = NSURL(fileURLWithPath: fullPath)
+////        let fileURL = NSBundle.mainBundle().URLForResource(, withExtension: "png")
+//        Alamofire.upload(.POST, "http://\(g.IP):8080/FSC/ParentServlet?AC=imageUpload", file: fileURL)
         let data:NSData = UIImagePNGRepresentation(image)!
-        let url:NSURL = NSURL(string: "http://192.168.43.157:8080/FSC/ParentServlet?AC=imageUpload")!;
+        let url:NSURL = NSURL(string: "http://\(g.IP):8080/FSC/ParentServlet?AC=imageUpload")!;
         
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: url);
         request.HTTPMethod = "POST"
@@ -117,7 +123,6 @@ class ImageSelectViewController: UIViewController,UIImagePickerControllerDelegat
         body.appendData(NSString(format:"Content-Type:application/octet-stream\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
         body.appendData(data)
         body.appendData(NSString(format:"\r\n(boundary)").dataUsingEncoding(NSUTF8StringEncoding)!)
-        print(body)
         request.HTTPBody = body
         let que=NSOperationQueue()
         NSURLConnection.sendAsynchronousRequest(request, queue: que, completionHandler: {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class SignViewController: UIViewController {
     
@@ -30,75 +31,120 @@ class SignViewController: UIViewController {
         let phone = self.phone?.text
         let studentID = self.studentID?.text
         let identify = self.identify?.text
-        if password == password2{
-            self.asynchronousPost(username!, pass: password!, name: name!, phone: phone!, studentID: studentID!, identify: identify!)
+        if self.OK {
+            if password == password2{
+                self.asynchronousPost(username!, pass: password!, pass2: password2!,name: name!, phone: phone!, studentID: studentID!, identify: identify!)
+            }else{
+                self.tip_password?.text = "两次密码不一致"
+            }
         }else{
-            self.tip_password?.text = "两次密码不一致"
+            self.tip_password?.text = "用户名未经检测"
+            self.tip_password?.textColor = UIColor.redColor()
         }
+       
         
     }
+    
+    var OK:Bool = false
     
     @IBAction func sure(){
-        
+        makesure()
     }
     
-    func asynchronousPost(username:String,pass:String,name:String,phone:String,studentID:String,identify:String) -> Bool{
+    //var req = NSMutableURLRequest.init()
+    
+    func makesure(){
         let global = Global()
-        let url:NSURL! = NSURL(string: "http://\(global.IP):8080/FSC/PControllerServlet?AC=parentLoginJSON&userName=\(name)&password=\(pass)")
-        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringCacheData,timeoutInterval: 10)
-        var flag:Bool = false
-        request.HTTPMethod = "POST"
-        
-        NSURLConnection.sendAsynchronousRequest(request, queue:NSOperationQueue.mainQueue()){
-            (response, data, error) -> Void in
+        Alamofire.request(.POST, "http://\(global.IP):8080/FSC/UtilServlet?AC=isUserNameValid", parameters: ["userName":(self.username?.text)!])
+            .response { request, response, data, error in
             if data != nil{
                 do{
                     
-                    let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
-                    //解析JSON字符串
-                    
-                    let error = json.objectForKey("Error")
-                    
-                    if error == nil{
-                        let ParentUserName = json.objectForKey("ParentUserName") as! String
-                        let ParentName = json.objectForKey("ParentName") as! String
-                        let ImagePosition = json.objectForKey("ImagePosition") as! String
-                        NSUserDefaults.standardUserDefaults().setObject(name, forKey: "username")
-                        NSUserDefaults.standardUserDefaults().setObject(pass, forKey: "password")
-                        NSUserDefaults.standardUserDefaults().setObject(ParentUserName, forKey: "ParentUserName")
-                        NSUserDefaults.standardUserDefaults().setObject(ParentName, forKey: "ParentName")
-                        NSUserDefaults.standardUserDefaults().setObject(ImagePosition, forKey: "ImagePosition")
-                        NSUserDefaults.standardUserDefaults().setInteger(1, forKey: "login")
-                        self.performSegueWithIdentifier("LoginIdentifier", sender: self)
-                        flag = true
-                    }else{
-                        self.tip_password?.text = ""
+                   let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
+                   let result = json.objectForKey("Result") as! String
+                    print(result)
+                    if result == "false" {
+                        self.tip_password?.text = "用户名不可用"
                         self.tip_password?.textColor = UIColor.redColor()
+                        self.OK = false
+                    }else{
+                        self.tip_password?.text = "用户名可用"
+                        self.tip_password?.textColor = UIColor.greenColor()
+                        self.OK = true
                     }
+                    
                 }catch let erro{
                     
                     print("Something is worry with \(erro)")
                     
                 }
                 
+            }
+        }
+
+    }
+    
+    func asynchronousPost(username:String,pass:String,pass2:String,name:String,phone:String,studentID:String,identify:String) {
+        let global = Global()
+        Alamofire.request(.POST, "http://\(global.IP):8080//FSC/PControllerServlet?AC=parentReg", parameters: ["userName":username,"password":pass,"password_again":pass2,"name":name,"phone":phone,"studentID":studentID,"identify":identify])
+            .response { request, response, data, error in
+            if data != nil{
+                do{
+                    
+                    let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
+                    print(json)
+                    let Error = json.objectForKey("Error") as! String
+                    print(Error)
+                    if Error != "" {
+                        self.getIdentify()
+                    }else{
+                        self.performSegueWithIdentifier("returnIdentifier", sender: self)
+                    }
+                }catch let erro{
+                    
+                    print("Something is worry with \(erro)")
+                    
+                }
+
                 
             }
         }
-        return flag
+    }
+    
+    func getIdentify(){
+        let g = Global()
+        //let url:NSURL! = NSURL(string:"http://\(g.IP):8080/FSC/idCode.jsp")
+        Alamofire.request(.POST, "http://\(g.IP):8080/FSC/idCode.jsp", parameters: nil)
+            .response { request, response, data, error in
+                if data != nil{
+                 let newImage = UIImage(data: data!)
+                self.identifyImage?.image = newImage
+            }
+        }
+
     }
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let g = Global()
-        identifyImage?.kf_setImageWithURL(NSURL(string:"http://\(g.IP):8080/FSC/idCode.jsp")!)
-        // Do any additional setup after loading the view.
+        self.getIdentify()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.username?.resignFirstResponder()
+        self.password?.resignFirstResponder()
+        self.password2?.resignFirstResponder()
+        self.phone?.resignFirstResponder()
+        self.name?.resignFirstResponder()
+        self.studentID?.resignFirstResponder()
+        self.identify?.resignFirstResponder()
+        
+    }
+
     
 
     /*

@@ -7,21 +7,34 @@
 //
 
 import UIKit
+import Alamofire
 
 class AllTableViewController: UITableViewController,CarouselBannerViewDelegate{
     
     var bannerView = CarouselBannerView()
     var imageSource = NSArray()
     var g = Global()
-    let imagePosition = NSUserDefaults.standardUserDefaults().valueForKey("ImagePosition") as? String
+    //let imagePosition = NSUserDefaults.standardUserDefaults().valueForKey("ImagePosition") as? String
+    
+    var News:[news] = [news(url: "", name: "", brief: "", time: "")]
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //self.getStart()
+        self.getNews()
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        let customFont = UIFont(name: "heiti SC", size: 13.0)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont!], forState: UIControlState.Normal)
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
+         self.getNews()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,18 +46,20 @@ class AllTableViewController: UITableViewController,CarouselBannerViewDelegate{
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 3
+        return 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if section == 0{
         return 1
+        }else{
+            return News.count
+        }
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         tableView.tableFooterView=UIView()
-//        tableView.registerNib(UINib(nibName: "AllTableViewCell", bundle:nil),forCellReuseIdentifier: "cell")
-//        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! AllTableViewCell
         if indexPath.section == 0{
             tableView.registerNib(UINib(nibName: "AllTableViewCell", bundle:nil),forCellReuseIdentifier: "cell")
             let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! AllTableViewCell
@@ -54,21 +69,15 @@ class AllTableViewController: UITableViewController,CarouselBannerViewDelegate{
             imageSource = NSArray.init(object: "")
             self.performSelector(Selector("fetchData"), withObject:nil, afterDelay: 0)
             return cell
-        }else if indexPath.section == 1 {
-            tableView.registerNib(UINib(nibName: "AllTableViewCell", bundle:nil),forCellReuseIdentifier: "cell")
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! AllTableViewCell
-            cell.All_info?.text = "  "
-            cell.All_info?.textColor = UIColor.blueColor()
-            cell.userInteractionEnabled = false
-            return cell
         }else{
             tableView.registerNib(UINib(nibName: "NewsTableViewCell", bundle:nil),forCellReuseIdentifier: "cell")
             let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! NewsTableViewCell
-            cell.News_image?.backgroundColor = UIColor.grayColor()
-            cell.News_name?.text = "EDG战队训练室探秘"
-            cell.News_info?.text = "横看成岭侧成峰"
+           // cell.News_image?.backgroundColor = UIColor.grayColor()
+        cell.News_image?.kf_setImageWithURL(NSURL(string:"http://\(g.IP):8080\(News[indexPath.row].url! as String)")!)
+            cell.News_name?.text = News[indexPath.row].name
+            cell.News_info?.text = News[indexPath.row].brief
             cell.News_info?.textColor = UIColor.grayColor()
-            cell.News_date?.text = "2016-2-21"
+            cell.News_date?.text = News[indexPath.row].time
             cell.News_date?.textColor = UIColor.grayColor()
             cell.userInteractionEnabled = true
             return cell
@@ -79,23 +88,20 @@ class AllTableViewController: UITableViewController,CarouselBannerViewDelegate{
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0{
             return 160
-        }else if indexPath.section == 1 {
-            return 30
         }else{
             return 65
         }
         }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 1 || section == 2{
-            return  ""
+        if section == 1{
+            return  " "
         }
-       return " "
+       return ""
     }
 //    (NSURL(string:"http://\(g.IP):8080\(imagePosition! as String)")!)
     func fetchData(){ //获取图片信息
-        imageSource = NSArray.init(objects: "http://\(g.IP):8080\(imagePosition! as String)","http://static.dmcdn.cn/cfs/2016/1/86cb20f1-ec19-451a-975c-9123a92b1b16.jpg","http://static.dmcdn.cn/cfs/2015/12/f1f88dd4-493f-43d0-9f67-a62c4ce70d54.jpg","http://pimg.damai.cn/perform/damai/NewIndexManagement/201601/e0cbde39ecc94a4986e9ed8f6b2767e8.jpg")
-        //         imageSource = NSArray.init(object: "http://static.damai.cn/cfs/2015/12/1ab03ad9-fcab-4806-b2a9-56e111bcde1f.jpg")
+        imageSource = NSArray.init(objects: "http://\(g.IP):8080/FSC/data/1.jpg","http://\(g.IP):8080/FSC/data/2.jpg","http://\(g.IP):8080/FSC/data/3.jpg","http://\(g.IP):8080/FSC/data/4.jpg")
         
         self.bannerView .reloadData()
     }
@@ -112,12 +118,53 @@ class AllTableViewController: UITableViewController,CarouselBannerViewDelegate{
         print("点击\(index)")
     }
 
-    
+    func getNews(){
+        let global = Global()
+        Alamofire.request(.POST, "http://\(global.IP):8080/FSC/ParentServlet?AC=getNoticeListJSON", parameters: nil)
+            .response { request, response, data, error in
+                if data != nil{
+                    do{
+                        
+                let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
+                let briefnotice = json.objectForKey("briefnotice")
+                for var i = 0; i < briefnotice?.count; i+=1 {
+                
+                let u = briefnotice!.objectAtIndex(i).objectForKey("url") as! String
+                 
+                let n = briefnotice!.objectAtIndex(i).objectForKey("notice_name") as! String
+                 print(i+i+i)
+                let b = briefnotice!.objectAtIndex(i).objectForKey("brief") as! String
+                
+                let t = briefnotice!.objectAtIndex(i).objectForKey("time") as! String
+             
+                let new = news(url: u, name: n, brief: b, time: t)
+             
+                    if i == 0{
+                        self.News[0] = new
+                    }else{
+                        self.News.append(new)
+                    }
+                 }
+
+                    }catch let erro{
+                        
+                        print("Something is worry with \(erro)")
+                        
+                    }
+                    
+                }
+             self.tableView.reloadData()
+        }
+    }
+
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-
-     }
-
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("NewsIdentifier") as! NewsViewController
+        vc.navigationItem.title = self.News[indexPath.row].name
+        vc.tit = self.News[indexPath.row].name
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.

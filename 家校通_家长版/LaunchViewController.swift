@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class LaunchViewController: UIViewController {
 
@@ -19,11 +20,22 @@ class LaunchViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         let login = NSUserDefaults.standardUserDefaults().valueForKey("username")
         if login == nil{
-            self.performSegueWithIdentifier("NologIdentifier", sender: self)
         }else {
-            self.performSegueWithIdentifier("YeslogIdentifier", sender: self)
+         self.login()
         }
     }
+    
+    func login(){
+        let name = NSUserDefaults.standardUserDefaults().valueForKey("username")
+        let pass = NSUserDefaults.standardUserDefaults().valueForKey("password")
+        let global = Global()
+        Alamofire.request(.POST, "http://\(global.IP):8080/FSC/PControllerServlet?AC=parentLoginJSON", parameters: ["userName":name!,"password":pass!])
+            .response { request, response, data, error in
+            self.performSegueWithIdentifier("YeslogIdentifier", sender: self)
+        }
+        
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
