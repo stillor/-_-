@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,28 +12,46 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="255.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2q-p7-gqr">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2q-p7-gqr">
                         <rect key="frame" x="17" y="8" width="291" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="ZA5-Rb-EPm"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mx8-MX-a6z">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mx8-MX-a6z">
                         <rect key="frame" x="235" y="221" width="85" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="85" id="38n-BI-XKM"/>
+                            <constraint firstAttribute="height" constant="21" id="xc8-SV-G3V"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pws-Dt-1x2">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pws-Dt-1x2">
                         <rect key="frame" x="13" y="52" width="295" height="154"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="Pws-Dt-1x2" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="1uc-0e-EkR"/>
+                    <constraint firstItem="Mx8-MX-a6z" firstAttribute="top" secondItem="Pws-Dt-1x2" secondAttribute="bottom" constant="15" id="2Qw-WK-3ot"/>
+                    <constraint firstItem="Pws-Dt-1x2" firstAttribute="top" secondItem="z2q-p7-gqr" secondAttribute="bottom" constant="23" id="7bA-q2-6JT"/>
+                    <constraint firstItem="Pws-Dt-1x2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="HhW-sh-Fib"/>
+                    <constraint firstItem="z2q-p7-gqr" firstAttribute="trailing" secondItem="Pws-Dt-1x2" secondAttribute="trailing" id="Hv2-Wr-aV5"/>
+                    <constraint firstItem="z2q-p7-gqr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="J3i-7h-wHM"/>
+                    <constraint firstAttribute="trailing" secondItem="Mx8-MX-a6z" secondAttribute="trailing" id="ckr-gc-WIk"/>
+                    <constraint firstItem="z2q-p7-gqr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="9" id="n2l-5r-mA0"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Mx8-MX-a6z" secondAttribute="bottom" constant="5.5" id="vGd-Bl-wt3"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="MessageDetail_date" destination="Mx8-MX-a6z" id="0ls-sX-tko"/>

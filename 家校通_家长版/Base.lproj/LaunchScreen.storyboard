@@ -17,14 +17,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FSC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crl-HC-7KI">
-                                <rect key="frame" x="135" y="138" width="51" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="zNr-5s-vMJ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="西安交通学校" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRG-Ox-iDs">
+                                <rect key="frame" x="120" y="476" width="75" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="74f-ew-qbD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zNr-5s-vMJ" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="1Ol-ze-ZBi"/>
+                            <constraint firstItem="MRG-Ox-iDs" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="456" id="AyR-Sk-iDu"/>
+                            <constraint firstItem="MRG-Ox-iDs" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="120" id="KtW-z0-A6W"/>
+                            <constraint firstItem="zNr-5s-vMJ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Lbg-uf-wsj"/>
+                            <constraint firstItem="zNr-5s-vMJ" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="LrO-iD-IBX"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="MRG-Ox-iDs" secondAttribute="bottom" constant="71" id="mMz-Qi-fA4"/>
+                            <constraint firstAttribute="trailing" secondItem="zNr-5s-vMJ" secondAttribute="trailing" id="wws-2S-DEb"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
@@ -33,4 +48,7 @@
             <point key="canvasLocation" x="253" y="367"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background" width="900" height="1600"/>
+    </resources>
 </document>

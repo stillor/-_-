@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,22 +13,34 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxJ-sF-cn5">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxJ-sF-cn5">
                         <rect key="frame" x="33" y="11" width="170" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rdb-m9-H7m">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rdb-m9-H7m">
                         <rect key="frame" x="219" y="11" width="93" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="93" id="epP-Os-0CI"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="RxJ-sF-cn5" firstAttribute="baseline" secondItem="Rdb-m9-H7m" secondAttribute="baseline" id="1N6-Fj-D3f"/>
+                    <constraint firstItem="Rdb-m9-H7m" firstAttribute="leading" secondItem="RxJ-sF-cn5" secondAttribute="trailing" constant="16" id="DxI-cn-Shr"/>
+                    <constraint firstItem="RxJ-sF-cn5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="25" id="Vha-fT-CRb"/>
+                    <constraint firstItem="RxJ-sF-cn5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="Vp9-LE-4ZK"/>
+                    <constraint firstItem="Rdb-m9-H7m" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="esP-HK-Xqu"/>
+                    <constraint firstItem="RxJ-sF-cn5" firstAttribute="firstBaseline" secondItem="Rdb-m9-H7m" secondAttribute="firstBaseline" id="pEE-MU-FMh"/>
+                    <constraint firstItem="Rdb-m9-H7m" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tjf-eo-zPD"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="Student_Homework_Detail" destination="Rdb-m9-H7m" id="PcF-C0-h0I"/>

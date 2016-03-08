@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,22 +13,34 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgm-cb-9C6">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgm-cb-9C6">
                         <rect key="frame" x="34" y="11" width="91" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="91" id="aJV-gS-Wcy"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9m3-yL-noe">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9m3-yL-noe">
                         <rect key="frame" x="149" y="11" width="122" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="9m3-yL-noe" firstAttribute="leading" secondItem="qgm-cb-9C6" secondAttribute="trailing" constant="24" id="9Ca-xg-0ya"/>
+                    <constraint firstItem="qgm-cb-9C6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="D2d-Bg-nbb"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="9m3-yL-noe" secondAttribute="trailing" constant="41" id="Mvf-Lh-Y4r"/>
+                    <constraint firstItem="qgm-cb-9C6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="26" id="NMR-O5-UD5"/>
+                    <constraint firstItem="qgm-cb-9C6" firstAttribute="firstBaseline" secondItem="9m3-yL-noe" secondAttribute="firstBaseline" id="fJq-4Q-qrj"/>
+                    <constraint firstItem="qgm-cb-9C6" firstAttribute="baseline" secondItem="9m3-yL-noe" secondAttribute="baseline" id="y4B-7d-1QK"/>
+                    <constraint firstItem="qgm-cb-9C6" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="zde-UK-YXJ"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="Me_Detail" destination="9m3-yL-noe" id="UgE-Lc-zcW"/>

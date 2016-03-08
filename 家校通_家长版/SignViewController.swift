@@ -128,22 +128,29 @@ class SignViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getIdentify()
+        self.view.backgroundColor = UIColor(colorLiteralRed: 250/255, green: 250/255, blue:  250/255, alpha: 1)
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
+        self.username?.becomeFirstResponder()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.username?.resignFirstResponder()
-        self.password?.resignFirstResponder()
-        self.password2?.resignFirstResponder()
-        self.phone?.resignFirstResponder()
-        self.name?.resignFirstResponder()
-        self.studentID?.resignFirstResponder()
-        self.identify?.resignFirstResponder()
-        
-    }
+//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+//        self.username?.resignFirstResponder()
+//        self.password?.resignFirstResponder()
+//        self.password2?.resignFirstResponder()
+//        self.phone?.resignFirstResponder()
+//        self.name?.resignFirstResponder()
+//        self.studentID?.resignFirstResponder()
+//        self.identify?.resignFirstResponder()
+//        
+//    }
 
     
 

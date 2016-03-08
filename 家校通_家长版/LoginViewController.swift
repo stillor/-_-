@@ -75,9 +75,15 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.log?.backgroundColor = UIColor.blueColor()
+        self.log?.backgroundColor = UIColor(red: 4/255, green: 175/255, blue: 200/255, alpha: 1)
         // Do any additional setup after loading the view.
+         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
+    }
+
     
 
     override func didReceiveMemoryWarning() {

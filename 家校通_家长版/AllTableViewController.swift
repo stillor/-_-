@@ -63,7 +63,7 @@ class AllTableViewController: UITableViewController,CarouselBannerViewDelegate{
         if indexPath.section == 0{
             tableView.registerNib(UINib(nibName: "AllTableViewCell", bundle:nil),forCellReuseIdentifier: "cell")
             let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! AllTableViewCell
-            self.bannerView = CarouselBannerView.init(frame: CGRectMake(0, 0, 320, 160))
+            self.bannerView = CarouselBannerView.init(frame: CGRectMake(0, 0, 390, 200))
             cell.addSubview(self.bannerView)
             self.bannerView.bannerDelegate = self
             imageSource = NSArray.init(object: "")
@@ -87,9 +87,9 @@ class AllTableViewController: UITableViewController,CarouselBannerViewDelegate{
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0{
-            return 160
+            return 200
         }else{
-            return 65
+            return 80
         }
         }
     
