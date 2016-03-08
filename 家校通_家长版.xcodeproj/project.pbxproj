@@ -14,6 +14,9 @@
 		291646561C7B03E6007EBD16 /* StudentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291646551C7B03E6007EBD16 /* StudentTableViewController.swift */; };
 		291646581C7B040A007EBD16 /* CommunicationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291646571C7B040A007EBD16 /* CommunicationTableViewController.swift */; };
 		29168C831C895A0900BF5D61 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29168C821C895A0900BF5D61 /* LaunchViewController.swift */; };
+		292796491C8EB73E0044E154 /* RewardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292796481C8EB73E0044E154 /* RewardTableViewController.swift */; };
+		292796641C8EBC100044E154 /* RewardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292796621C8EBC100044E154 /* RewardTableViewCell.swift */; };
+		292796651C8EBC100044E154 /* RewardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 292796631C8EBC100044E154 /* RewardTableViewCell.xib */; };
 		292BD2AE1C8DB01100972A60 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292BD2AD1C8DB01100972A60 /* NewsViewController.swift */; };
 		294D37D71C82815800019DDA /* Pandect_ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294D37D61C82815800019DDA /* Pandect_ButtonTableViewCell.swift */; };
 		2953CB411C8D1C7A0009A8C1 /* CarouselBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2953CB3D1C8D1C7A0009A8C1 /* CarouselBannerView.swift */; };
@@ -336,6 +339,9 @@
 		291646551C7B03E6007EBD16 /* StudentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTableViewController.swift; sourceTree = "<group>"; };
 		291646571C7B040A007EBD16 /* CommunicationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationTableViewController.swift; sourceTree = "<group>"; };
 		29168C821C895A0900BF5D61 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		292796481C8EB73E0044E154 /* RewardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardTableViewController.swift; sourceTree = "<group>"; };
+		292796621C8EBC100044E154 /* RewardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardTableViewCell.swift; sourceTree = "<group>"; };
+		292796631C8EBC100044E154 /* RewardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RewardTableViewCell.xib; sourceTree = "<group>"; };
 		292BD2AD1C8DB01100972A60 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		294D37D61C82815800019DDA /* Pandect_ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pandect_ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		2953CB3D1C8D1C7A0009A8C1 /* CarouselBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselBannerView.swift; sourceTree = SOURCE_ROOT; };
@@ -543,6 +549,7 @@
 				29168C821C895A0900BF5D61 /* LaunchViewController.swift */,
 				2953CC361C8D29210009A8C1 /* SignViewController.swift */,
 				292BD2AD1C8DB01100972A60 /* NewsViewController.swift */,
+				292796481C8EB73E0044E154 /* RewardTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -578,6 +585,8 @@
 				29DA055F1C86C90B008E3870 /* MessageDetailTableViewCell.xib */,
 				29DA05621C86C922008E3870 /* MessageResponseTableViewCell.swift */,
 				29DA05631C86C922008E3870 /* MessageResponseTableViewCell.xib */,
+				292796621C8EBC100044E154 /* RewardTableViewCell.swift */,
+				292796631C8EBC100044E154 /* RewardTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -953,6 +962,7 @@
 				29DA053A1C868023008E3870 /* NewsTableViewCell.xib in Resources */,
 				29DA053E1C868D04008E3870 /* MessageTableViewCell.xib in Resources */,
 				29D355661C82A1B30060425B /* MyInformationTableViewCell.xib in Resources */,
+				292796651C8EBC100044E154 /* RewardTableViewCell.xib in Resources */,
 				298FC0381C8564DE00A9B71E /* AllTableViewCell.xib in Resources */,
 				299359531C79556900947518 /* Assets.xcassets in Resources */,
 				29DD3EA91C7D7B8E000A2986 /* MeTableViewCell.xib in Resources */,
@@ -988,6 +998,7 @@
 				29DA05601C86C90B008E3870 /* MessageDetailTableViewCell.swift in Sources */,
 				298564761C7C04A80089D7E9 /* CommunicationTableViewCell.swift in Sources */,
 				291646581C7B040A007EBD16 /* CommunicationTableViewController.swift in Sources */,
+				292796641C8EBC100044E154 /* RewardTableViewCell.swift in Sources */,
 				29DA05641C86C922008E3870 /* MessageResponseTableViewCell.swift in Sources */,
 				29D94C7A1C7C25FB00A5708C /* AttendanceTableViewController.swift in Sources */,
 				298564641C7BF4810089D7E9 /* ScoreTableViewCell.swift in Sources */,
@@ -1019,6 +1030,7 @@
 				298021D81C83E2BA0039C7F1 /* AllTableViewController.swift in Sources */,
 				299359491C79556900947518 /* AppDelegate.swift in Sources */,
 				29D355651C82A1B30060425B /* MyInformationTableViewCell.swift in Sources */,
+				292796491C8EB73E0044E154 /* RewardTableViewController.swift in Sources */,
 				2953CB441C8D1C7A0009A8C1 /* UITextField+LTBouncyPlaceholder.swift in Sources */,
 				29DD3EAB1C7D7BA1000A2986 /* MeTableViewController.swift in Sources */,
 				295463FA1C891C1300E17DAE /* Student_Score.swift in Sources */,

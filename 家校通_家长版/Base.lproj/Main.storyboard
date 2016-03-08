@@ -443,6 +443,35 @@
             </objects>
             <point key="canvasLocation" x="2020" y="-1537"/>
         </scene>
+        <!--Reward Table View Controller-->
+        <scene sceneID="Dxz-7j-3C5">
+            <objects>
+                <tableViewController storyboardIdentifier="RewardIdentifier" id="ig4-z9-jaR" customClass="RewardTableViewController" customModule="家校通_家长版" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2ZJ-0B-lHt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="hEa-4t-vL5" customClass="RewardTableViewCell" customModule="家校通_家长版" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hEa-4t-vL5" id="IKe-cl-7O6">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ig4-z9-jaR" id="zms-pl-Yp7"/>
+                            <outlet property="delegate" destination="ig4-z9-jaR" id="CJC-uW-Pjg"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vqg-HM-iGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2389" y="-1537"/>
+        </scene>
         <!--Score Table View Controller-->
         <scene sceneID="BLv-7I-j3z">
             <objects>

@@ -1,18 +1,16 @@
 //
-//  AttendanceTableViewCell.swift
+//  RewardTableViewCell.swift
 //  家校通_家长版
 //
-//  Created by stiller on 16/2/23.
+//  Created by stiller on 16/3/8.
 //  Copyright © 2016年 stiller. All rights reserved.
 //
 
 import UIKit
 
-class AttendanceTableViewCell: UITableViewCell {
-    @IBOutlet var Student_Attendance_Date:UILabel?
-    @IBOutlet var Student_Attendance_Morning:UILabel?
-    @IBOutlet var Student_Attendance_Afternoon:UILabel?
-    @IBOutlet var Student_Attendance_Evening:UILabel?
+class RewardTableViewCell: UITableViewCell {
+    @IBOutlet var content:UILabel?
+    @IBOutlet var time:UILabel?
 
     override func awakeFromNib() {
         super.awakeFromNib()

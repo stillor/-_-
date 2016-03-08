@@ -10,10 +10,11 @@ import UIKit
 import Alamofire
 
 class AttendanceTableViewController: UITableViewController {
-    var Attendance
-
+    
+    var Attendance = [attendance(date: "", morning: "", afternoon: "", evening: "")]
     override func viewDidLoad() {
         super.viewDidLoad()
+        getAttendance()
 //        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -36,7 +37,7 @@ class AttendanceTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return Attendance.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -44,8 +45,10 @@ class AttendanceTableViewController: UITableViewController {
         tableView.registerNib(UINib(nibName: "AttendanceTableViewCell", bundle:nil),forCellReuseIdentifier: "cell")
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! AttendanceTableViewCell
 
-            cell.Student_Attendance_Name?.text = "2016/02/21"
-            cell.Student_Attendance_Detail?.text = "已到"
+            cell.Student_Attendance_Date?.text = self.Attendance[indexPath.row].date
+            cell.Student_Attendance_Morning?.text = self.Attendance[indexPath.row].morning
+            cell.Student_Attendance_Afternoon?.text = self.Attendance[indexPath.row].afternoon
+            cell.Student_Attendance_Evening?.text = self.Attendance[indexPath.row].evening
         
         cell.userInteractionEnabled = false
 
@@ -58,28 +61,31 @@ class AttendanceTableViewController: UITableViewController {
     
     func getAttendance(){
         let global = Global()
-        Alamofire.request(.POST, "http://\(global.IP):8080/FSC/ParentServlet?AC=getScoreTypeJSON", parameters: nil)
+        Alamofire.request(.POST, "http://\(global.IP):8080/FSC/ParentServlet?AC=getHistorySignJSON", parameters: nil)
             .response { request, response, data, error in
-                if data != nil{
-                    do{
-                        let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
-                        let scoreType = json.objectForKey("scoreType")
-                        for var i = 0; i < scoreType?.count; i+=1 {
-                            if i == 0{
-                                self.score[0] = scoreType!.objectAtIndex(i).objectForKey("type") as! String
-                            }else{
-                                self.score.append(scoreType!.objectAtIndex(i).objectForKey("type") as! String)
-                            }
-                        }
-                        
-                    }catch let erro{
-                        
-                        print("Something is worry with \(erro)")
-                        
+            if data != nil{
+            do{
+            let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
+            let sign = json.objectForKey("history_sign")
+            print(sign)
+                for var i = 0; i < sign!.count; i+=1{
+                let d = sign?.objectAtIndex(i).objectForKey("date") as! String
+                let m = sign?.objectAtIndex(i).objectForKey("morning") as! String
+                let a = sign?.objectAtIndex(i).objectForKey("afternoon") as! String
+                let e = sign?.objectAtIndex(i).objectForKey("evening") as! String
+                let att = attendance(date: d, morning: m, afternoon: a, evening: e)
+                    if i == 0{
+                        self.Attendance[0] = att
+                    }else{
+                        self.Attendance.append(att)
                     }
-                    
                 }
-                self.tableView.reloadData()
+    
+            }catch let erro{
+             print("Something is worry with \(erro)")
+             }
+          }
+          self.tableView.reloadData()
         }
     }
 

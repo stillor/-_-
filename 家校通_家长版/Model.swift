@@ -22,3 +22,28 @@ class news{
     }
 
 }
+
+class attendance{
+    var date:String?
+    var morning:String?
+    var afternoon:String?
+    var evening:String?
+    
+    init(date:String,morning:String,afternoon:String,evening:String){
+        self.afternoon = afternoon
+        self.date = date
+        self.evening = evening
+        self.morning = morning
+    }
+}
+
+class reward{
+    var content:String?
+    var time:String?
+    
+    init(content:String,time:String){
+        self.content = content
+        self.time = time
+    }
+}
+

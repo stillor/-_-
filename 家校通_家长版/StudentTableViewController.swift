@@ -247,6 +247,13 @@ class StudentTableViewController: UITableViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             break
+        case 3:
+            if indexPath.section == 1{
+            let vc = storyboard?.instantiateViewControllerWithIdentifier("RewardIdentifier") as! RewardTableViewController
+            vc.navigationItem.title = "历史奖罚情况"
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            break
         default:
             break
         }
@@ -290,13 +297,11 @@ class StudentTableViewController: UITableViewController {
             do{
             let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
             let sign = json.objectForKey("sign")
-            print(sign)
             self.attendance[0] = sign?.objectAtIndex(0).objectForKey("moring") as! String
             self.attendance[1] = sign?.objectAtIndex(0).objectForKey("afternoon") as! String
 
             self.attendance[2] = sign?.objectAtIndex(0).objectForKey("evening")as! String
             let reward = json.objectForKey("reward")
-            print(reward)
                 for var i = 0;i < reward!.count; i+=1{
                     if i == 0 {
                         self.reward[i] = reward?.objectAtIndex(i).objectForKey("reward") as! String
@@ -305,7 +310,6 @@ class StudentTableViewController: UITableViewController {
                     }
                 }
             let homework = json.objectForKey("homework")
-            print(homework)
             self.homework_chinese = homework?.objectAtIndex(0).objectForKey("content") as! String
              self.homework_math = homework?.objectAtIndex(1).objectForKey("content") as! String
              self.homework_english = homework?.objectAtIndex(2).objectForKey("content") as! String
