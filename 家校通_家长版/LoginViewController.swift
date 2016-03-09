@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class LoginViewController: UIViewController {
     @IBOutlet var username:UITextField?
@@ -22,27 +23,24 @@ class LoginViewController: UIViewController {
         pass = password?.text
         
         if name != nil && pass != nil {
+            print(name)
+            print(pass)
             asynchronousPost(name!, pass: pass!)
         }
     
     }
     
     
-    func asynchronousPost(name:String,pass:String) -> Bool{
+    func asynchronousPost(name:String,pass:String) {
         let global = Global()
-        let url:NSURL! = NSURL(string: "http://\(global.IP):8080/FSC/PControllerServlet?AC=parentLoginJSON&userName=\(name)&password=\(pass)")
-        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringCacheData,timeoutInterval: 10)
-        var flag:Bool = false
-        request.HTTPMethod = "POST"
-        
-        NSURLConnection.sendAsynchronousRequest(request, queue:NSOperationQueue.mainQueue()){
-            (response, data, error) -> Void in
+        Alamofire.request(.POST, "http://\(global.IP):8080/FSC/PControllerServlet?AC=parentLoginJSON", parameters: ["userName":name,"password":pass])
+                .response { request, response, data, error in
             if data != nil{
                 do{
                     
-                    let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
+                let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
                     //解析JSON字符串
-                    
+                    print(json)
                     let error = json.objectForKey("Error")
                    
                     if error == nil{
@@ -56,7 +54,6 @@ class LoginViewController: UIViewController {
                         NSUserDefaults.standardUserDefaults().setObject(ImagePosition, forKey: "ImagePosition")
                     NSUserDefaults.standardUserDefaults().setInteger(1, forKey: "login")
                     self.performSegueWithIdentifier("LoginIdentifier", sender: self)
-                        flag = true
                     }else{
                         self.tip?.text = "用户名或密码错误"
                         self.tip?.textColor = UIColor.redColor()
@@ -69,12 +66,13 @@ class LoginViewController: UIViewController {
                 
                 
             }
-        }        
-        return flag
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.password?.secureTextEntry = true
+        
         self.log?.backgroundColor = UIColor(red: 4/255, green: 175/255, blue: 200/255, alpha: 1)
         // Do any additional setup after loading the view.
          UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default

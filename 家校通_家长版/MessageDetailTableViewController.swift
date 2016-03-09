@@ -26,7 +26,7 @@ class MessageDetailTableViewController: UITableViewController,UITextViewDelegate
     var toolBar: UIToolbar!
     var textView: UITextView!
     var sendButton: UIButton!
-    var message = [detail(author: "", receiver: "", time: "", content: "")]
+    var Message = [detail(author: "", receiver: "", time: "", content: "")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -152,7 +152,10 @@ class MessageDetailTableViewController: UITableViewController,UITextViewDelegate
     }
     
     func sendAction(){
-        print("发送成功")
+        sendMessage()
+        self.textView.text = ""
+        Message = [detail(author: "", receiver: "", time: "", content: "")]
+        getMessage()
     }
 
 
@@ -165,7 +168,11 @@ class MessageDetailTableViewController: UITableViewController,UITextViewDelegate
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if section == 1{
+            return self.Message.count
+        }else{
         return 1
+        }
     }
 
     
@@ -185,22 +192,26 @@ class MessageDetailTableViewController: UITableViewController,UITextViewDelegate
             cell.accessoryType=UITableViewCellAccessoryType.None
             let user = NSUserDefaults.standardUserDefaults().valueForKey("ParentUserName") as! String
             let name = NSUserDefaults.standardUserDefaults().valueForKey("ParentName") as! String
-            if self.message[indexPath.row].author == user{
+            if self.Message[indexPath.row].author == user{
                 cell.MessageResponse_name?.text = name
+                let imagePosition = NSUserDefaults.standardUserDefaults().valueForKey("ImagePosition") as? String
+                let g = Global()
+                cell.MessageResponse_image!.kf_setImageWithURL(NSURL(string:"http://\(g.IP):8080\(imagePosition! as String)")!)
             }else{
               cell.MessageResponse_name?.text = self.teacher
             }
-            cell.MessageResponse_date?.text = self.message[indexPath.row].time
-            cell.MessageResponse_info?.text = self.message[indexPath.row].content
-            let fullPath = ((NSHomeDirectory() as NSString) .stringByAppendingPathComponent("Documents") as NSString).stringByAppendingPathComponent("myicon.png")
-            //可选绑定,若保存过用户头像则显示之
-            if let savedImage = UIImage(contentsOfFile: fullPath){
-                cell.MessageResponse_image!.image = savedImage
-            }
+            cell.MessageResponse_date?.text = self.Message[indexPath.row].time
+            cell.MessageResponse_info?.text = self.Message[indexPath.row].content
+            
+//            let fullPath = ((NSHomeDirectory() as NSString) .stringByAppendingPathComponent("Documents") as NSString).stringByAppendingPathComponent("myicon.png")
+//            //可选绑定,若保存过用户头像则显示之
+//            if let savedImage = UIImage(contentsOfFile: fullPath){
+//                cell.MessageResponse_image!.image = savedImage
+            //}
             cell.userInteractionEnabled = false
             return cell
         }
-            }
+    }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0{
             return  (firstcell?.frame.size.height)!
@@ -225,6 +236,7 @@ class MessageDetailTableViewController: UITableViewController,UITextViewDelegate
             do{
             let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
             let mess = json.objectForKey("message_detail")
+            print(mess)
                 for var i = 0;i<mess?.count;i+=1{
                 let a = mess?.objectAtIndex(i).objectForKey("authorUserName") as! String
                 let r = mess?.objectAtIndex(i).objectForKey("receiverUserName") as! String
@@ -232,9 +244,9 @@ class MessageDetailTableViewController: UITableViewController,UITextViewDelegate
                 let c = mess?.objectAtIndex(i).objectForKey("content") as! String
                 let de = detail(author: a, receiver: r, time: t, content: c)
                     if i == 0{
-                        self.message[i] = de
+                        self.Message[i] = de
                     }else{
-                        self.message.append(de)
+                        self.Message.append(de)
                     }
                 }
                 
@@ -249,6 +261,16 @@ class MessageDetailTableViewController: UITableViewController,UITextViewDelegate
         }
 
     }
+    
+    func sendMessage(){
+        let global = Global()
+        Alamofire.request(.POST, "http://\(global.IP):8080/FSC/ParentServlet?AC=sendMessageJSON", parameters: ["themeID":self.theme!,"content":self.textView.text])
+            .response { request, response, data, error in
+                
+            }
+        
+    }
+
 
     /*
     // Override to support conditional editing of the table view.

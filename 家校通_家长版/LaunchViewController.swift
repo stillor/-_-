@@ -10,10 +10,21 @@ import UIKit
 import Alamofire
 
 class LaunchViewController: UIViewController {
+    @IBOutlet var sign:UIButton?
+    @IBOutlet var log:UIButton?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let login = NSUserDefaults.standardUserDefaults().valueForKey("username")
+        if login == nil{
+            self.sign?.hidden = false
+            self.log?.hidden = false
+
+        }else {
+            self.sign?.hidden = true
+            self.log?.hidden = true
+            self.login()
+        }
         // Do any additional setup after loading the view.
     }
     

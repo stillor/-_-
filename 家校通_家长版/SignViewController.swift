@@ -91,17 +91,17 @@ class SignViewController: UIViewController {
     
     func asynchronousPost(username:String,pass:String,pass2:String,name:String,phone:String,studentID:String,identify:String) {
         let global = Global()
-        Alamofire.request(.POST, "http://\(global.IP):8080//FSC/PControllerServlet?AC=parentReg", parameters: ["userName":username,"password":pass,"password_again":pass2,"name":name,"phone":phone,"studentID":studentID,"identify":identify])
+        Alamofire.request(.POST, "http://\(global.IP):8080/FSC/PControllerServlet?AC=parentReg", parameters: ["userName":username,"password":pass,"password_again":pass2,"name":name,"phone":phone,"studentID":studentID,"identify":identify])
             .response { request, response, data, error in
             if data != nil{
                 do{
                     
                 let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
                 print(json)
-                    let result = json.objectForKey("Result") as! String
-                    if result == "Succeed"{
+        if let result = json.objectForKey("Result") {
             self.performSegueWithIdentifier("returnIdentifier", sender: self)
-                    }else{
+        }else{
+                    print(json)
                     let Error = json.objectForKey("Error") as! String
                     print(Error)
                     if Error != "" {
@@ -137,6 +137,9 @@ class SignViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.password?.secureTextEntry = true
+        self.password2?.secureTextEntry = true
+        
         self.getIdentify()
         self.view.backgroundColor = UIColor(colorLiteralRed: 250/255, green: 250/255, blue:  250/255, alpha: 1)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
