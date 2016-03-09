@@ -101,7 +101,7 @@ class StudentTableViewController: UITableViewController {
             cell.Student_info?.hidden = false
             cell.Student_detail?.hidden = false
             if indexPath.section != 3{
-             cell.Student_info?.text = "霍勇博"
+             cell.Student_info?.text = " "
              cell.Student_detail?.text = self.attendance[indexPath.row]
             cell.userInteractionEnabled = false
              cell.Student_detail?.hidden = false
@@ -138,6 +138,9 @@ class StudentTableViewController: UITableViewController {
 
    
         }else if segment?.selectedSegmentIndex == 2{
+            if score[0] == ""{
+              cell.userInteractionEnabled = false
+            }else{
             cell.Student_center?.hidden = true
             cell.Student_detail?.hidden = true
             cell.Student_info?.hidden = false
@@ -147,6 +150,7 @@ class StudentTableViewController: UITableViewController {
             cell.Student_info?.text = "历史成绩图示"
             }
             cell.userInteractionEnabled = true
+            }
             
         }else{
             cell.Student_center?.hidden = true
@@ -155,9 +159,13 @@ class StudentTableViewController: UITableViewController {
             cell.userInteractionEnabled = true
             switch indexPath.section{
             case 0:
+                if reward[0] == ""{
+                    cell.userInteractionEnabled = false
+                }else{
                 cell.Student_info?.text = reward[indexPath.row]
                 cell.userInteractionEnabled = false
-                 cell.accessoryType = UITableViewCellAccessoryType.None
+                cell.accessoryType = UITableViewCellAccessoryType.None
+                }
                 break
             case 1:
                 cell.Student_info?.text = "历史奖罚"
@@ -269,15 +277,15 @@ class StudentTableViewController: UITableViewController {
             if data != nil{
             do{
             let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
-            let scoreType = json.objectForKey("scoreType")
-            for var i = 0; i < scoreType?.count; i+=1 {
+            if let scoreType = json.objectForKey("scoreType"){
+            for var i = 0; i < scoreType.count; i+=1 {
                 if i == 0{
-                self.score[0] = scoreType!.objectAtIndex(i).objectForKey("type") as! String
+                self.score[0] = scoreType.objectAtIndex(i).objectForKey("type") as! String
                 }else{
-                self.score.append(scoreType!.objectAtIndex(i).objectForKey("type") as! String)
+                self.score.append(scoreType.objectAtIndex(i).objectForKey("type") as! String)
                 }
              }
-                        
+            }
             }catch let erro{
                         
              print("Something is worry with \(erro)")
@@ -296,24 +304,26 @@ class StudentTableViewController: UITableViewController {
             if data != nil{
             do{
             let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
-            let sign = json.objectForKey("sign")
-            self.attendance[0] = sign?.objectAtIndex(0).objectForKey("moring") as! String
-            self.attendance[1] = sign?.objectAtIndex(0).objectForKey("afternoon") as! String
+            if let sign = json.objectForKey("sign"){
+            self.attendance[0] = sign.objectAtIndex(0).objectForKey("moring") as! String
+            self.attendance[1] = sign.objectAtIndex(0).objectForKey("afternoon") as! String
 
-            self.attendance[2] = sign?.objectAtIndex(0).objectForKey("evening")as! String
-            let reward = json.objectForKey("reward")
-                for var i = 0;i < reward!.count; i+=1{
+            self.attendance[2] = sign.objectAtIndex(0).objectForKey("evening")as! String
+            }
+            if let reward = json.objectForKey("reward"){
+                for var i = 0;i < reward.count; i+=1{
                     if i == 0 {
-                        self.reward[i] = reward?.objectAtIndex(i).objectForKey("reward") as! String
+                        self.reward[i] = reward.objectAtIndex(i).objectForKey("reward") as! String
                     }else{
-                      self.reward.append(reward?.objectAtIndex(i).objectForKey("reward") as! String)
+                      self.reward.append(reward.objectAtIndex(i).objectForKey("reward") as! String)
                     }
                 }
-            let homework = json.objectForKey("homework")
-            self.homework_chinese = homework?.objectAtIndex(0).objectForKey("content") as! String
-             self.homework_math = homework?.objectAtIndex(1).objectForKey("content") as! String
-             self.homework_english = homework?.objectAtIndex(2).objectForKey("content") as! String
-
+                }
+            if let homework = json.objectForKey("homework"){
+            self.homework_chinese = homework.objectAtIndex(0).objectForKey("content") as! String
+             self.homework_math = homework.objectAtIndex(1).objectForKey("content") as! String
+             self.homework_english = homework.objectAtIndex(2).objectForKey("content") as! String
+            }
          }catch let erro{
         print("Something is worry with \(erro)")
         }

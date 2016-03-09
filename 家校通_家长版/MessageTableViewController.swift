@@ -42,15 +42,26 @@ class MessageTableViewController: UITableViewController {
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         tableView.tableFooterView=UIView()
         tableView.registerNib(UINib(nibName: "MessageTableViewCell", bundle:nil),forCellReuseIdentifier: "cell")
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! MessageTableViewCell
+        if Message[0].title == ""{
+           cell.Message_date?.hidden = true
+           cell.Message_info?.hidden = true
+           cell.Message_name?.text = "无消息"
+           cell.userInteractionEnabled = false
+        }else{
+            cell.Message_date?.hidden = false
+            cell.Message_info?.hidden = false
+             cell.userInteractionEnabled = true
         cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
         cell.Message_name?.text = Message[indexPath.row].title
         cell.Message_info?.text = Message[indexPath.row].content
         cell.Message_info?.textColor = UIColor.grayColor()
         cell.Message_date?.text = Message[indexPath.row].date
         cell.Message_date?.textColor = UIColor.grayColor()
+        }
         return cell
     }
     

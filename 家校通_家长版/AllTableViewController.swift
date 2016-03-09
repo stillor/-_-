@@ -73,13 +73,24 @@ class AllTableViewController: UITableViewController,CarouselBannerViewDelegate{
             tableView.registerNib(UINib(nibName: "NewsTableViewCell", bundle:nil),forCellReuseIdentifier: "cell")
             let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! NewsTableViewCell
            // cell.News_image?.backgroundColor = UIColor.grayColor()
-        cell.News_image?.kf_setImageWithURL(NSURL(string:"http://\(g.IP):8080\(News[indexPath.row].url! as String)")!)
-            cell.News_name?.text = News[indexPath.row].name
-            cell.News_info?.text = News[indexPath.row].brief
+        if self.News[0].name == ""{
+            cell.News_name?.text = "无通知"
+            cell.News_info?.hidden = true
+            cell.News_image?.hidden = true
+            cell.News_date?.hidden = true
+            cell.userInteractionEnabled = false
+        }else{
+            cell.News_info?.hidden = false
+            cell.News_image?.hidden = false
+            cell.News_date?.hidden = false
+        cell.News_image?.kf_setImageWithURL(NSURL(string:"http://\(self.g.IP):8080\(self.News[indexPath.row].url! as String)")!)
+            cell.News_name?.text = self.News[indexPath.row].name
+            cell.News_info?.text = self.News[indexPath.row].brief
             cell.News_info?.textColor = UIColor.grayColor()
-            cell.News_date?.text = News[indexPath.row].time
+            cell.News_date?.text = self.News[indexPath.row].time
             cell.News_date?.textColor = UIColor.grayColor()
             cell.userInteractionEnabled = true
+            }
             return cell
         }
         

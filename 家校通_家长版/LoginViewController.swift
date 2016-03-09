@@ -23,8 +23,6 @@ class LoginViewController: UIViewController {
         pass = password?.text
         
         if name != nil && pass != nil {
-            print(name)
-            print(pass)
             asynchronousPost(name!, pass: pass!)
         }
     

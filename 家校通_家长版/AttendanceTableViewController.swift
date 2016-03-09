@@ -66,13 +66,12 @@ class AttendanceTableViewController: UITableViewController {
             if data != nil{
             do{
             let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
-            let sign = json.objectForKey("history_sign")
-            print(sign)
-                for var i = 0; i < sign!.count; i+=1{
-                let d = sign?.objectAtIndex(i).objectForKey("date") as! String
-                let m = sign?.objectAtIndex(i).objectForKey("morning") as! String
-                let a = sign?.objectAtIndex(i).objectForKey("afternoon") as! String
-                let e = sign?.objectAtIndex(i).objectForKey("evening") as! String
+            if let sign = json.objectForKey("history_sign"){
+                for var i = 0; i < sign.count; i+=1{
+                let d = sign.objectAtIndex(i).objectForKey("date") as! String
+                let m = sign.objectAtIndex(i).objectForKey("morning") as! String
+                let a = sign.objectAtIndex(i).objectForKey("afternoon") as! String
+                let e = sign.objectAtIndex(i).objectForKey("evening") as! String
                 let att = attendance(date: d, morning: m, afternoon: a, evening: e)
                     if i == 0{
                         self.Attendance[0] = att
@@ -80,7 +79,7 @@ class AttendanceTableViewController: UITableViewController {
                         self.Attendance.append(att)
                     }
                 }
-    
+            }
             }catch let erro{
              print("Something is worry with \(erro)")
              }
