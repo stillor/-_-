@@ -105,46 +105,69 @@ class ImageSelectViewController: UIViewController,UIImagePickerControllerDelegat
     
     func upload(image:UIImage){
         let g = Global()
-//        let fullPath = ((NSHomeDirectory() as NSString).stringByAppendingPathComponent("Documents") as NSString).stringByAppendingPathComponent("myicon.png")
+        //let data1:NSData = UIImagePNGRepresentation(image)!
+        let fullPath = ((NSHomeDirectory() as NSString).stringByAppendingPathComponent("Documents") as NSString).stringByAppendingPathComponent("myicon.png")
 //        var fileURL = NSURL(fileURLWithPath: fullPath)
 ////        let fileURL = NSBundle.mainBundle().URLForResource(, withExtension: "png")
-//        Alamofire.upload(.POST, "http://\(g.IP):8080/FSC/ParentServlet?AC=imageUpload", file: fileURL)
-        let data:NSData = UIImagePNGRepresentation(image)!
-        let url:NSURL = NSURL(string: "http://\(g.IP):8080/FSC/ParentServlet?AC=imageUpload")!;
-        
-        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url);
-        request.HTTPMethod = "POST"
-        let boundary = "=-------------="
-        let contentType:String="multipart/form-data;boundary="+boundary
-        request.addValue(contentType, forHTTPHeaderField:"Content-Type")
-        let body=NSMutableData()
-        body.appendData(NSString(format:"\r\n(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-        body.appendData(NSString(format:"Content-Disposition:form-data;name=\"file1\";filename=\"myicon.png\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-        body.appendData(NSString(format:"Content-Type:application/octet-stream\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-        body.appendData(data)
-        body.appendData(NSString(format:"\r\n(boundary)").dataUsingEncoding(NSUTF8StringEncoding)!)
-        request.HTTPBody = body
-        let que=NSOperationQueue()
-        NSURLConnection.sendAsynchronousRequest(request, queue: que, completionHandler: {
-            (response, data, error) ->Void in
-            if (error != nil){
-                print(error)
-            }else{
-                //Handle data in NSData type
-                let tr:String=NSString(data:data!,encoding:NSUTF8StringEncoding)! as String
-                print(tr)
-                //在主线程中更新UI风火轮才停止
-                dispatch_sync(dispatch_get_main_queue(), {
-                    print("jahajahj")
-                    //self.av.stopAnimating()
-                    //self.lb.hidden=true
-                    
-                })
-                
+        Alamofire.upload(
+            .POST,
+            "http://\(g.IP):8080/FSC/ParentServlet?AC=imageUpload",
+            multipartFormData: { multipartFormData in
+                multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: fullPath), name: "myicon")
+            },
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    upload.responseJSON { response in
+                        debugPrint(response)
+                        
+                    }
+                case .Failure(let encodingError):
+                    print(encodingError)
+                }
             }
-        })
+        )
+
+        
+       // let url:NSURL = NSURL(string: "http://\(g.IP):8080/FSC/ParentServlet?AC=imageUpload")!;
+        //let global = Global()
+
+        
+        
+//        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url);
+//        request.HTTPMethod = "POST"
+//        let boundary = "=-------------="
+//        let contentType:String="multipart/form-data;boundary="+boundary
+//        request.addValue(contentType, forHTTPHeaderField:"Content-Type")
+//        let body=NSMutableData()
+//        body.appendData(NSString(format:"\r\n(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+//        body.appendData(NSString(format:"Content-Disposition:form-data;name=\"file1\";filename=\"myicon.png\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+//        body.appendData(NSString(format:"Content-Type:application/octet-stream\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+//        body.appendData(data)
+//        body.appendData(NSString(format:"\r\n(boundary)").dataUsingEncoding(NSUTF8StringEncoding)!)
+//        request.HTTPBody = body
+//        let que=NSOperationQueue()
+//        NSURLConnection.sendAsynchronousRequest(request, queue: que, completionHandler: {
+//            (response, data, error) ->Void in
+//            if (error != nil){
+//                print(error)
+//            }else{
+//                //Handle data in NSData type
+//                let tr:String=NSString(data:data!,encoding:NSUTF8StringEncoding)! as String
+//                print(tr)
+//                //在主线程中更新UI风火轮才停止
+//                dispatch_sync(dispatch_get_main_queue(), {
+//                    print("jahajahj")
+//                    //self.av.stopAnimating()
+//                    //self.lb.hidden=true
+//                    
+//                })
+//                
+//            }
+//        })
     }
-    /*
+    
+       /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

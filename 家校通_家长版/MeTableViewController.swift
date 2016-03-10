@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class MeTableViewController: UITableViewController {
 
@@ -32,7 +33,7 @@ class MeTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        tableView.reloadData()
+        self.login()
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
     }
 
@@ -152,6 +153,26 @@ class MeTableViewController: UITableViewController {
             return 40
         }
     }
+    
+    func login(){
+        let name = NSUserDefaults.standardUserDefaults().valueForKey("username")
+        let pass = NSUserDefaults.standardUserDefaults().valueForKey("password")
+        let global = Global()
+        Alamofire.request(.POST, "http://\(global.IP):8080/FSC/PControllerServlet?AC=parentLoginJSON", parameters: ["userName":name!,"password":pass!])
+            .response { request, response, data, error in
+                do{
+                    let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
+                    let ImagePosition = json.objectForKey("ImagePosition") as! String
+                    NSUserDefaults.standardUserDefaults().setObject(ImagePosition, forKey: "ImagePosition")
+                    
+                }catch{
+                    
+                }
+            self.tableView.reloadData()
+        }
+        
+    }
+
     
    
     
