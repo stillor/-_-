@@ -44,6 +44,17 @@ class MessageDetailTableViewController: UITableViewController,UITextViewDelegate
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         getMessage()
+        
+        self.refreshControl = UIRefreshControl()
+        
+        self.refreshControl?.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    func refreshData(){
+        Message = [detail(author: "", receiver: "", time: "", content: "")]
+        getMessage()
+        self.refreshControl?.endRefreshing()
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -240,7 +251,6 @@ class MessageDetailTableViewController: UITableViewController,UITextViewDelegate
             do{
             let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
             let mess = json.objectForKey("message_detail")
-            print(mess)
                 for var i = 0;i<mess?.count;i+=1{
                 let a = mess?.objectAtIndex(i).objectForKey("authorUserName") as! String
                 let r = mess?.objectAtIndex(i).objectForKey("receiverUserName") as! String

@@ -264,30 +264,30 @@
                         <viewControllerLayoutGuide type="bottom" id="oZY-b6-eoL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="90k-Gq-Njx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XeA-mV-9RT">
-                                <rect key="frame" x="50" y="128" width="220" height="220"/>
+                                <rect key="frame" x="37" y="101" width="301" height="393"/>
                                 <color key="backgroundColor" red="0.84647005890000004" green="0.84647005890000004" blue="0.84647005890000004" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="XeA-mV-9RT" firstAttribute="centerX" secondItem="90k-Gq-Njx" secondAttribute="centerX" id="0gS-kc-YRn"/>
-                            <constraint firstItem="XeA-mV-9RT" firstAttribute="leading" secondItem="90k-Gq-Njx" secondAttribute="leadingMargin" constant="34" id="6nO-wu-LTB"/>
-                            <constraint firstItem="oZY-b6-eoL" firstAttribute="top" secondItem="XeA-mV-9RT" secondAttribute="bottom" constant="220" id="FYx-cO-gGN"/>
-                            <constraint firstItem="XeA-mV-9RT" firstAttribute="top" secondItem="vdm-qS-9VS" secondAttribute="bottom" constant="108" id="c0m-Rb-of4"/>
+                            <constraint firstItem="XeA-mV-9RT" firstAttribute="centerX" secondItem="90k-Gq-Njx" secondAttribute="centerX" id="6H4-ZW-QMa"/>
+                            <constraint firstItem="oZY-b6-eoL" firstAttribute="top" secondItem="XeA-mV-9RT" secondAttribute="bottom" constant="173" id="7nW-6V-dyK"/>
+                            <constraint firstItem="XeA-mV-9RT" firstAttribute="top" secondItem="vdm-qS-9VS" secondAttribute="bottom" constant="81" id="b3A-9R-RR4"/>
+                            <constraint firstItem="XeA-mV-9RT" firstAttribute="leading" secondItem="90k-Gq-Njx" secondAttribute="leadingMargin" constant="21" id="gNM-85-nGW"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="icon" destination="XeA-mV-9RT" id="yW7-0d-CKB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tmc-dT-v4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1297" y="-240"/>
+            <point key="canvasLocation" x="1296.5" y="-240.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Hm4-Xs-tTd">

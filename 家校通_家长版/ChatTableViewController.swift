@@ -102,7 +102,7 @@ class ChatTableViewController: UITableViewController {
         let data:NSData = try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)
             
          let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data, options:NSJSONReadingOptions.AllowFragments)
-        print(json)
+
         let chinese = json.objectForKey("Chinese")
         for var i = 0; i < chinese?.count; i+=1 {
                 if i == 0{
@@ -113,7 +113,6 @@ class ChatTableViewController: UITableViewController {
                 let str = chinese?.objectAtIndex(i).objectForKey("grade") as! String
                 let f = (str as NSString).floatValue
               self.chinese.append(CGFloat(Float(f)))
-                print(self.chinese[i])
                }
           }
             let math = json.objectForKey("math")

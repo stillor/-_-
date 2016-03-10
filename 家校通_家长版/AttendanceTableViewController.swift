@@ -70,7 +70,7 @@ class AttendanceTableViewController: UITableViewController {
             if data != nil{
             do{
             let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
-            print(json)
+
             if let sign = json.objectForKey("history_sign"){
                 for var i = 0; i < sign.count; i+=1{
                 let d = sign.objectAtIndex(i).objectForKey("date") as! String
