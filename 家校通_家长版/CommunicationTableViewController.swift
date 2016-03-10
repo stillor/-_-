@@ -32,6 +32,7 @@ class CommunicationTableViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+         //getTeacher()
     }
     
     func segmentChange(){

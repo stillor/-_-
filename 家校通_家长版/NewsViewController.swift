@@ -21,6 +21,10 @@ class NewsViewController: UIViewController {
         self.getContent()
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(animated: Bool) {
+       // self.getContent()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

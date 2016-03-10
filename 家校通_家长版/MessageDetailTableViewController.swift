@@ -46,6 +46,10 @@ class MessageDetailTableViewController: UITableViewController,UITextViewDelegate
         getMessage()
     }
     
+    override func viewDidAppear(animated: Bool) {
+         //getMessage()
+    }
+    
     func keyboardWillShow(notification: NSNotification) {
         
         let userInfo = notification.userInfo as NSDictionary!

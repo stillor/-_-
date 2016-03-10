@@ -48,6 +48,8 @@ class StudentTableViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        //getScore()
+        //getOthers()
     }
     
     func segmentChange(){

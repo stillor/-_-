@@ -34,7 +34,7 @@ class AllTableViewController: UITableViewController,CarouselBannerViewDelegate{
     
     override func viewDidAppear(animated: Bool) {
          UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
-         self.getNews()
+         //self.getNews()
     }
 
     override func didReceiveMemoryWarning() {

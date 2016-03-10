@@ -27,6 +27,10 @@ class MessageTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewDidAppear(animated: Bool) {
+       // getMessage()
+    }
 
     // MARK: - Table view data source
 
