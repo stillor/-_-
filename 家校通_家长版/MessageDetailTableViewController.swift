@@ -20,6 +20,7 @@ class MessageDetailTableViewController: UITableViewController,UITextViewDelegate
     var tit:String?
     var date:String?
     var teacher:String?
+    var teacherID:String?
     
     var firstcell:MessageDetailTableViewCell?
     
@@ -205,15 +206,16 @@ class MessageDetailTableViewController: UITableViewController,UITextViewDelegate
             tableView.registerNib(UINib(nibName: "MessageResponseTableViewCell", bundle:nil),forCellReuseIdentifier: "cell1")
             let cell = tableView.dequeueReusableCellWithIdentifier("cell1", forIndexPath: indexPath) as! MessageResponseTableViewCell
             cell.accessoryType=UITableViewCellAccessoryType.None
-            let user = NSUserDefaults.standardUserDefaults().valueForKey("ParentUserName") as! String
+            //let user = NSUserDefaults.standardUserDefaults().valueForKey("ParentUserName") as! String
             let name = NSUserDefaults.standardUserDefaults().valueForKey("ParentName") as! String
-            if self.Message[indexPath.row].author == user{
+            
+            if self.Message[indexPath.row].receiver != self.teacherID{
                 cell.MessageResponse_name?.text = name
                 let imagePosition = NSUserDefaults.standardUserDefaults().valueForKey("ImagePosition") as? String
                 let g = Global()
                 cell.MessageResponse_image!.kf_setImageWithURL(NSURL(string:"http://\(g.IP):8080\(imagePosition! as String)")!)
             }else{
-              cell.MessageResponse_name?.text = self.teacher
+             cell.MessageResponse_name?.text = self.teacher
             }
             cell.MessageResponse_date?.text = self.Message[indexPath.row].time
             cell.MessageResponse_info?.text = self.Message[indexPath.row].content
@@ -269,10 +271,10 @@ class MessageDetailTableViewController: UITableViewController,UITextViewDelegate
             print("Something is worry with \(erro)")
                         
             }
-                    
+        self.tableView.reloadData()
         }
-      self.tableView.reloadData()
-        }
+        
+      }
 
     }
     

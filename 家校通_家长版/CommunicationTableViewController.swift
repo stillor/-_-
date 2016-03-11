@@ -111,6 +111,7 @@ class CommunicationTableViewController: UITableViewController {
                 vc.teacher = "英语老师"
             }
         }
+        vc.teacherID = self.Contacts[indexPath.row].userName
 
         self.navigationController?.pushViewController(vc, animated: true)
        

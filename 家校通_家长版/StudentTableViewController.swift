@@ -104,7 +104,7 @@ class StudentTableViewController: UITableViewController {
             cell.Student_detail?.hidden = false
             if indexPath.section != 3{
              cell.Student_info?.text = " "
-             cell.Student_detail?.text = self.attendance[indexPath.row]
+             cell.Student_detail?.text = self.attendance[indexPath.section]
             cell.userInteractionEnabled = false
              cell.Student_detail?.hidden = false
             cell.accessoryType = UITableViewCellAccessoryType.None
@@ -164,7 +164,11 @@ class StudentTableViewController: UITableViewController {
                 if reward[0] == ""{
                     cell.userInteractionEnabled = false
                 }else{
+                if reward[indexPath.row] == ""{
+                   cell.Student_info?.text = "今日无奖罚"
+                }else{
                 cell.Student_info?.text = reward[indexPath.row]
+                }
                 cell.userInteractionEnabled = false
                 cell.accessoryType = UITableViewCellAccessoryType.None
                 }
@@ -301,21 +305,24 @@ class StudentTableViewController: UITableViewController {
     
     func getOthers(){
         let global = Global()
-        Alamofire.request(.POST, "http://\(global.IP):8080/FSC/ParentServlet?AC=getSign_eward_homeworkJSON", parameters: nil)
+        Alamofire.request(.POST, "http://\(global.IP):8080/FSC/ParentServlet?AC=getSign_reward_homeworkJSON", parameters: nil)
             .response { request, response, data, error in
             if data != nil{
             do{
             let json:AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
+          
             if let sign = json.objectForKey("sign"){
             self.attendance[0] = sign.objectAtIndex(0).objectForKey("moring") as! String
+            
             self.attendance[1] = sign.objectAtIndex(0).objectForKey("afternoon") as! String
-
+                
             self.attendance[2] = sign.objectAtIndex(0).objectForKey("evening")as! String
+
             }
             if let reward = json.objectForKey("reward"){
                 for var i = 0;i < reward.count; i+=1{
                     if i == 0 {
-                        self.reward[i] = reward.objectAtIndex(i).objectForKey("reward") as! String
+                    self.reward[i] = reward.objectAtIndex(i).objectForKey("reward") as! String
                     }else{
                       self.reward.append(reward.objectAtIndex(i).objectForKey("reward") as! String)
                     }

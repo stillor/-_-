@@ -13,6 +13,7 @@ class MessageTableViewController: UITableViewController {
     var Message = [message(title: "", themeID: "", date: "", content: "")]
     var user:String?
     var teacher:String?
+    var teacherID:String?
     override func viewDidLoad() {
         super.viewDidLoad()
         getMessage()
@@ -82,6 +83,7 @@ class MessageTableViewController: UITableViewController {
         vc.tit = self.Message[indexPath.row].title
         vc.date = self.Message[indexPath.row].date
         vc.teacher = self.teacher
+        vc.teacherID = self.teacherID
         vc.hidesBottomBarWhenPushed = true
         
         self.navigationController?.pushViewController(vc, animated: true)
