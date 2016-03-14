@@ -30,7 +30,19 @@ class AllTableViewController: UITableViewController,CarouselBannerViewDelegate{
         let customFont = UIFont(name: "heiti SC", size: 13.0)
         UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont!], forState: UIControlState.Normal)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
+        self.refreshControl = UIRefreshControl()
+        
+        self.refreshControl?.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
     }
+    
+    func refreshData(){
+      News = [news(url: "", name: "", brief: "", time: "")]
+      getNews()
+      self.refreshControl?.endRefreshing()
+        
+    }
+
     
     override func viewDidAppear(animated: Bool) {
          UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
